@@ -1,0 +1,178 @@
+﻿  SS5PlayerPlatform.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  SS5Player.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(180): warning C4099: 'ss::CellRef': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(179): note: 'ss::CellRef' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(311): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(814): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(817): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(848): warning C4099: 'ss::AnimeRef': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(847): note: 'ss::AnimeRef' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(979): warning C4099: 'ss::ResourceSet': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(978): note: 'ss::ResourceSet' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(1672): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(1984): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(1993): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(2000): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(2007): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(2233): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(3047): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(3070): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(3342): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(3347): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\ss5player.cpp(3432): warning C4244: '引数': 'double' から 'const float' への変換です。データが失われる可能性があります。
+  DebugPrint.cpp
+  ssplayer_PartState.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+  ssplayer_matrix.cpp
+  ssplayer_effectfunction.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_partstate.h(17): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(69): warning C4244: 'return': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(109): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(110): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(111): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(142): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(143): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(146): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(191): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(192): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(293): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(626): warning C4244: '*=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effectfunction.cpp(639): warning C4244: '*=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+  ssplayer_effect2.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(24): warning C4244: 'return': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(80): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(114): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(115): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(177): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(178): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(179): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(180): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(186): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(187): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(188): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(189): warning C4244: '=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(208): warning C4244: '*=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(221): warning C4244: '*=': 'float' から 'ss::u8' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(294): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(340): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(382): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(398): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(542): warning C4244: '引数': 'double' から 'const float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(630): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(676): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(707): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(780): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(820): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.cpp(821): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+  ssplayer_effect.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_partstate.h(17): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.cpp(557): warning C4244: '引数': 'double' から 'const float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.cpp(643): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Scene.cpp
+  BattleScene.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  Player.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  Parameter.cpp
+  main.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  Input.cpp
+  Controller.cpp
+  E1.cpp
+  Enemy.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\enemy\enemy.cpp(43): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\enemy\enemy.cpp(44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\enemy\enemy.cpp(34): warning C4101: 'state': ローカル変数は 1 度も使われていません。
+  AnimationController.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(40): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(51): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(64): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(90): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(122): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(154): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+c:\gitproject\colossusbreaker\source\effekseer\animationcontroller.cpp(186): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  Camera.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  Application.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+  コードを生成中...
+  AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.exe
+  AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.pdb (Partial PDB)
