@@ -19,9 +19,11 @@ void Player::Move(Enemy &enemy) {
 	if (mController.getRight())mPositionX += 3;
 	if (mController.getLeft())mPositionX -= 3;
 
-	ss::Quad mQuad = enemy.getQuad("armB2");
+	Quad mQuad = enemy.getQuad("armB2");
+
+	Vertex v((float)mPositionX, (float)mPositionY);
 	
-	if (Utility::CheckQuadPointHit(mQuad, mPositionX, mPositionY))DrawString(10, 10, "HIT", Parameter::COLOR_WHITE, 0);
+	if (mQuad > v)DrawString(10, 10, "HIT", Parameter::COLOR_WHITE, 0);
 }
 
 void Player::Draw() {

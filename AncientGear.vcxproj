@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>AncientGear</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <ProjectName>ColossusBreaker</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -155,6 +156,8 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Parameter.cpp" />
     <ClCompile Include="source\Player\Player.cpp" />
+    <ClCompile Include="source\Quad\Quad.cpp" />
+    <ClCompile Include="source\Quad\Vertex.cpp" />
     <ClCompile Include="source\Scene\BattleScene.cpp" />
     <ClCompile Include="source\Scene\Scene.cpp" />
     <ClCompile Include="source\SSPlayer\common\Animator\ssplayer_effect.cpp" />
@@ -177,6 +180,8 @@
     <ClInclude Include="source\Input\Input.h" />
     <ClInclude Include="source\Parameter.h" />
     <ClInclude Include="source\Player\Player.h" />
+    <ClInclude Include="source\Quad\Quad.h" />
+    <ClInclude Include="source\Quad\Vertex.h" />
     <ClInclude Include="source\Scene\BattleScene.h" />
     <ClInclude Include="source\Scene\Scene.h" />
     <ClInclude Include="source\SSPlayer\common\Animator\MersenneTwister.h" />

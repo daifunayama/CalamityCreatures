@@ -7,6 +7,7 @@
 #include "common/Animator/ssplayer_matrix.h"
 #include "../Parameter.h"
 
+
 namespace ss
 {
 
@@ -1971,7 +1972,7 @@ bool Player::getPartState(ResluteState& result, const char* name, int frameNo)
 	return rc;
 }
 
-ss::Quad Player::getPartQuad(const char* name) {
+Quad Player::getPartQuad(const char* name) {
 	int frameNo = getFrameNo();
 	bool rc = false;
 
@@ -1984,8 +1985,8 @@ ss::Quad Player::getPartQuad(const char* name) {
 	l = sqrtf(pow(state.size_X * state.scaleX * state.pivotX, 2.0) + pow(state.size_Y * state.scaleY * state.pivotY, 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * state.pivotY, state.size_X * state.scaleX * state.pivotX);
 
-	quad.tl.x = state.x - l * cosf(seta - state.rotationZ * Parameter::PI / 180);
-	quad.tl.y = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.tl().x() = state.x - l * cosf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.tl().y() = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta - state.rotationZ * Parameter::PI / 180);
 
 	DrawFormatString(300, 10, Parameter::COLOR_WHITE, "%5f", state.rotationZ);
 
@@ -1993,22 +1994,22 @@ ss::Quad Player::getPartQuad(const char* name) {
 	l = sqrtf(pow(state.size_X * state.scaleX * (1.0f - state.pivotX), 2.0) + pow(state.size_Y * state.scaleY * state.pivotY, 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * state.pivotY, state.size_X * state.scaleX * (1.0f - state.pivotX));
 
-	quad.tr.x = state.x + l * cosf(seta + state.rotationZ * Parameter::PI / 180);
-	quad.tr.y = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.tr().x() = state.x + l * cosf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.tr().y() = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta + state.rotationZ * Parameter::PI / 180);
 
 
 	l = sqrtf(pow(state.size_X * state.scaleX * state.pivotX, 2.0) + pow(state.size_Y * state.scaleY * (1.0f - state.pivotY), 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * (1.0f - state.pivotY), state.size_X * state.scaleX * state.pivotX);
 
-	quad.bl.x = state.x - l * cosf(seta + state.rotationZ * Parameter::PI / 180);
-	quad.bl.y = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.bl().x() = state.x - l * cosf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.bl().y() = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta + state.rotationZ * Parameter::PI / 180);
 
 
 	l = sqrtf(pow(state.size_X * state.scaleX * (1.0f - state.pivotX), 2.0) + pow(state.size_Y * state.scaleY * (1.0f - state.pivotY), 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * (1.0f - state.pivotY), state.size_X * state.scaleX * (1.0f - state.pivotX));
 
-	quad.br.x = state.x + l * cosf(seta - state.rotationZ * Parameter::PI / 180);
-	quad.br.y = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.br().x() = state.x + l * cosf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.br().y() = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta - state.rotationZ * Parameter::PI / 180);
 
 	return quad;
 }

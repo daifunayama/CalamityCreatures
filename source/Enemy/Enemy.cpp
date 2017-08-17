@@ -3,8 +3,8 @@
 #include "../Utility.h"
 #include "DxLib.h"
 
-ss::Quad Enemy::getQuad(const char* name) {
-	ss::Quad mQuad = mSprite->getPartQuad(name);
+Quad Enemy::getQuad(const char* name) {
+	Quad mQuad = mSprite->getPartQuad(name);
 	return mQuad;
 }
 
@@ -34,14 +34,12 @@ void Enemy::Draw() {
 	ss::ResluteState state;
 
 	int box = LoadGraph("Data/graphic/box.png");
-	ss::Quad mQuad = mSprite->getPartQuad("armB2");
+	Quad mQuad = mSprite->getPartQuad("armB2");
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA_X4, 100);
-	DrawModiGraphF(mQuad.tl.x,mQuad.tl.y, mQuad.tr.x, mQuad.tr.y, 
-		mQuad.br.x,  mQuad.br.y, mQuad.bl.x,  mQuad.bl.y, box, true);
+	DrawModiGraphF(mQuad.tl().x(),mQuad.tl().y(), mQuad.tr().x(), mQuad.tr().y(), 
+		mQuad.br().x(),  mQuad.br().y(), mQuad.bl().x(),  mQuad.bl().y(), box, true);
 
-	DrawCircle(mQuad.tl.x, mQuad.tl.y, 3, Parameter::COLOR_RED, 1, 1);
-	DrawCircle(mQuad.tr.x, mQuad.tr.y, 3, Parameter::COLOR_GREEN, 1, 1);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 }

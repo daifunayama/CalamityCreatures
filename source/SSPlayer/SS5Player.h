@@ -91,6 +91,8 @@ https://github.com/SpriteStudio/SpriteStudio5-SDK/wiki/%E3%82%B3%E3%83%B3%E3%83%
 #include "./Common/Animator/ssplayer_PartState.h"
 //#include "./Common/Animator/MersenneTwister.h"
 
+#include "../Quad/Quad.h"
+
 #pragma warning(disable : 4996)
 
 namespace ss
@@ -829,17 +831,6 @@ enum
 
 //------------------------------------------------------------------------------
 
-struct Vertex {
-	float x;
-	float y;
-};
-
-struct Quad {
-	Vertex tl;
-	Vertex tr;
-	Vertex bl;
-	Vertex br;
-};
 
 /**
  * Player

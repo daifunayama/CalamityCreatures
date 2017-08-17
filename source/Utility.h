@@ -24,7 +24,7 @@ public:
 		ss >> n;
 		return n;
 	}
-
+	/*
 	static bool CheckQuadPointHit(ss::Quad quad, int x, int y) {
 		float aX,aY,a,b;
 		bool t[4];
@@ -108,4 +108,5 @@ public:
 		if(t[0] && t[1] && t[2] && t[3])return true;
 		return false;
 	}
+	*/
 };
