@@ -50,12 +50,13 @@ Quad Quad::operator/(float coef){
 
 // Quadの中にVertexが入っているかどうか
 bool Quad::operator>(Vertex ver){
-
+	double rad = 0;
     // 左上座標を中心とし、右上座標への角度を割り出す
-    double rad = std::atan2(this->tr().x() - this->tl().x(), this->tr().y() - this->tl().y());
+	rad = std::atan2(this->tr().x() - this->tl().x(), this->tr().y() - this->tl().y());
     rad -= M_PI_2;
 
     // tlからtrへの直線がx軸に平行になるように、座標を回転させる
+
     Quad tmpQ;
     tmpQ.tl() = Vertex( this->tl().x() * std::cos(rad) -  this->tl().y() * std::sin(rad),
                                     this->tl().x() * std::sin(rad) + this->tl().y() * std::cos(rad));

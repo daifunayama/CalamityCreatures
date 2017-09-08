@@ -1,6 +1,6 @@
 #pragma once
 
-
+/*
 class Vertex{
 
 public:
@@ -22,3 +22,4 @@ private:
     float mY = 0;
 
 };
+*/

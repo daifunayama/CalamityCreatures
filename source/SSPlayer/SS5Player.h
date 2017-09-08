@@ -1090,7 +1090,8 @@ public:
 	* プレイヤー本体の位置を設定します。
 	*/
 	void  setPosition(float x, float y);
-
+	float getPositionX();
+	float getPositionY();
 	/*
 	* プレイヤー本体の回転角度を設定します。2Dの回転はZに値を設定してください。
 	*/

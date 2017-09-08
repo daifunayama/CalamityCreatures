@@ -18,6 +18,7 @@ int Parameter::FONT_120_FERRUM = -1;
 //êFíËã`
 const int Parameter::COLOR_WHITE = GetColor(255,255,255);
 const int Parameter::COLOR_BLACK = GetColor(0,0,0);
+const int Parameter::COLOR_GRAY = GetColor(128,128,128);
 const int Parameter::COLOR_RED = GetColor(255,0,0);
 const int Parameter::COLOR_BLUE = GetColor(0,0,255);
 const int Parameter::COLOR_GREEN = GetColor(0,255,0);

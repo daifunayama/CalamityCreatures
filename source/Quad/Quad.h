@@ -1,10 +1,16 @@
 #pragma once
 
-#include "Vertex.h"
+struct Vertex {
+	float x;
+	float y;
+};
 
+struct Quad {
+	Vertex tl, tr;
+	Vertex bl, br;
+};
 
-class Quad{
-
+/*
 public:
     Quad(){}
     Quad(Vertex, Vertex, Vertex, Vertex);
@@ -26,5 +32,5 @@ public:
 private:
     Vertex mTl, mTr;
     Vertex mBl, mBr;
-
 };
+*/

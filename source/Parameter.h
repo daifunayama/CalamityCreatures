@@ -75,44 +75,6 @@ public:
 	static const int S_PLAYER_THROW = 31;
 	static const int S_PLAYER_BURST = 32;
 
-	//魔具の状態
-	static const int S_ARMS_NORMAL = 1;
-	static const int S_ARMS_SUMMON = 10;
-	static const int S_ARMS_ATACK_C = 2;
-	static const int S_ARMS_ATACK_8C = 3;
-	static const int S_ARMS_ATACK_2C = 4;
-	static const int S_ARMS_ATACK_JC = 5;
-	static const int S_ARMS_ATACK_D = 6;
-	static const int S_ARMS_ATACK_8D = 7;
-	static const int S_ARMS_ATACK_2D = 8;
-	static const int S_ARMS_ATACK_JD = 9;
-
-	//プレイヤーの攻撃
-	static const int P_ATACK_A = 0;
-	static const int P_ATACK_8A = 1;
-	static const int P_ATACK_2A = 2;
-	static const int P_ATACK_JA = 3;
-	static const int P_ATACK_B = 4;
-	static const int P_ATACK_8B = 5;
-	static const int P_ATACK_2B = 6;
-	static const int P_ATACK_JB = 7;
-	static const int P_ATACK_3B = 8;
-	static const int P_ATACK_6B = 9;
-	static const int P_ATACK_THROW = 21;
-	static const int P_ATACK_THROW_R = 22;
-	static const int P_ATACK_THROW_AIR = 23;
-	static const int P_ATACK_THROW_AIR_R = 24;
-
-	//魔具の攻撃
-	static const int ATACK_C  = 0;
-	static const int ATACK_8C = 1;
-	static const int ATACK_2C = 2;
-	static const int ATACK_JC = 3;
-	static const int ATACK_D  = 4;
-	static const int ATACK_8D = 5;
-	static const int ATACK_2D = 6;
-	static const int ATACK_JD = 7;
-
 	//画面定義
 	static const int WINDOW_WIDTH = 1280;
 	static const int WINDOW_HEIGHT = 720;
@@ -123,6 +85,7 @@ public:
 	//色定義
 	static const int COLOR_WHITE;
 	static const int COLOR_BLACK;
+	static const int COLOR_GRAY;
 	static const int COLOR_RED;
 	static const int COLOR_BLUE;
 	static const int COLOR_GREEN;

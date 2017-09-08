@@ -166,8 +166,8 @@ void AnimationController::DrawLayer2() {
 					mEffAnimation[i].getWidth(), mEffAnimation[i].getHeight(), mEffAnimation[i].getGraph());
 
 				DrawRotaGraph2(
-					mEffAnimation[i].getPositionX() - (Camera::getInstance().getCenterX() - Parameter::WINDOW_WIDTH / 2), 
-					mEffAnimation[i].getPositionY() - (Camera::getInstance().getCenterY() - Parameter::WINDOW_HEIGHT / 2),
+					mEffAnimation[i].getPositionX() - Camera::getInstance().getPositonX(),
+					mEffAnimation[i].getPositionY() - Camera::getInstance().getPositonY(),
 					mEffAnimation[i].getWidth() / 2, mEffAnimation[i].getHeight() / 2, mEffAnimation[i].getExRate(), (Parameter::PI / 360)*mEffAnimation[i].getAngle(),
 					tmp, true, !mEffAnimation[i].getRight());
 
@@ -200,6 +200,38 @@ void AnimationController::DrawLayer3() {
 				DrawRotaGraph2(
 					mEffAnimation[i].getPositionX() - (Camera::getInstance().getCenterX() - Parameter::WINDOW_WIDTH / 2),
 					mEffAnimation[i].getPositionY() - (Camera::getInstance().getCenterY() - Parameter::WINDOW_HEIGHT / 2),
+					mEffAnimation[i].getWidth() / 2, mEffAnimation[i].getHeight() / 2, mEffAnimation[i].getExRate(), (Parameter::PI / 360)*mEffAnimation[i].getAngle(),
+					tmp, true, !mEffAnimation[i].getRight());
+
+
+				//ブレンドタイプをもとにもどす
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+			}
+		}
+	}
+}
+
+/*アニメーションをレイヤー3に描画*/
+void AnimationController::DrawFire() {
+	int tmp;
+
+	for (int i = 0; i < mEffAnimation.size(); i++) {
+		if (mEffAnimation[i].getLayer() == 11) {
+			//再生中のとき
+			if (mEffAnimation[i].getState() == 1) {
+
+				//加算タイプの場合はブレンド設定変更
+				if (mEffAnimation[i].getAddFlag())SetDrawBlendMode(DX_BLENDMODE_ADD, 255);
+
+
+				tmp = DerivationGraph(
+					(mEffAnimation[i].getCounter() / mEffAnimation[i].getSpeed()) % mEffAnimation[i].getDevided() * mEffAnimation[i].getWidth(),
+					(mEffAnimation[i].getCounter() / mEffAnimation[i].getSpeed()) / mEffAnimation[i].getDevided() * mEffAnimation[i].getHeight(),
+					mEffAnimation[i].getWidth(), mEffAnimation[i].getHeight(), mEffAnimation[i].getGraph());
+
+				DrawRotaGraph2(
+					mEffAnimation[i].getPositionX() - Camera::getInstance().getPositonX(),
+					mEffAnimation[i].getPositionY() - Camera::getInstance().getPositonY(),
 					mEffAnimation[i].getWidth() / 2, mEffAnimation[i].getHeight() / 2, mEffAnimation[i].getExRate(), (Parameter::PI / 360)*mEffAnimation[i].getAngle(),
 					tmp, true, !mEffAnimation[i].getRight());
 

@@ -27,7 +27,7 @@ public:
 	inline void setCenterX(int centerX) { mCenterX = centerX; }
 	inline void setCenterY(int centerY) { mCenterY = centerY; }
 	void Init();
-	void Update(Player& p1, Player& p2);
+	void Update(Player p1, Enemy enemy);
 
 private:
 	int mPositionX;		//ƒJƒƒ‰‚ÌXÀ•W
@@ -36,6 +36,7 @@ private:
 	int mCenterY;		//‰æ–Ê’†‰›‚ÌYÀ•W
 
 private:
+	void Follow(int, int,int);
 	Camera() {}
 	~Camera() {}
 };

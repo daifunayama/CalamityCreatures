@@ -1,50 +1,31 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (AncientGear.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  Quad.cpp
-c:\gitproject\colossusbreaker\source\quad\quad.cpp : warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (ColossusBreaker.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+  Player.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
 c:\gitproject\colossusbreaker\source\quad\quad.h : warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-c:\gitproject\colossusbreaker\source\quad\vertex.h : warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(56): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(59): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(59): error C2228: '.tl' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(59): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(59): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(60): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(61): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(61): error C2228: '.tr' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(61): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(61): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(62): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(63): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(63): error C2228: '.bl' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(63): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(63): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(64): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(65): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(65): error C2228: '.br' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(65): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(65): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(66): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(69): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(70): error C2065: 'rad': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): error C2228: '.tl' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): error C2228: '.x' の左側はクラス、構造体、共用体でなければなりません
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): error C2228: '.tr' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(72): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): error C2065: 'tmpQ': 定義されていない識別子です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): error C2228: '.tl' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): note: 型は 'unknown-type' です。
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): error C2228: '.y' の左側はクラス、構造体、共用体でなければなりません
-c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): error C2228: '.bl' の左側はクラス、構造体、共用体でなければなりません
-  c:\gitproject\colossusbreaker\source\quad\quad.cpp(73): note: 型は 'unknown-type' です。
-  コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  Scene.cpp
-  DebugPrint.cpp
-  ssplayer_matrix.cpp
-  ssplayer_PartState.cpp
-  Parameter.cpp
-  Input.cpp
-  Controller.cpp
-  E1.cpp
+c:\gitproject\colossusbreaker\source\player\player.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(94): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(100): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(102): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(109): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\gitproject\colossusbreaker\source\player\player.cpp(109): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(120): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(126): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(139): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(160): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(162): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(176): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(178): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(192): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(196): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(205): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(248): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(344): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\player\player.cpp(345): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.exe
+  AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.pdb (Partial PDB)

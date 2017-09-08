@@ -1,0 +1,17 @@
+﻿  Enemy.cpp
+c:\gitproject\colossusbreaker\source\ssplayer\common\loader\../Animator/ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\loader\../Animator/ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(23): warning C4099: 'ss::SsPartState': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(19): note: 'ss::SsPartState' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect2.h(25): warning C4099: 'ss::SsCell': タイプ名は最初 'struct' として使われていましたが 'class' として使われています。
+  c:\gitproject\colossusbreaker\source\ssplayer\common\loader\../Animator/ssplayer_cellmap.h(13): note: 'ss::SsCell' の宣言を確認してください
+c:\gitproject\colossusbreaker\source\ssplayer\../Quad/Quad.h : warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+c:\gitproject\colossusbreaker\source\enemy\../Player/Player.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+source\Enemy\Enemy.cpp(53): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  コード生成しています。
+  2 of 2618 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Release\AncientGear.exe

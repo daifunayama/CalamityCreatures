@@ -24,17 +24,69 @@ public:
 		ss >> n;
 		return n;
 	}
-	/*
-	static bool CheckQuadPointHit(ss::Quad quad, int x, int y) {
+	
+	static bool CheckQuadPointHit(Quad quad, int x, int y) {
 		float aX,aY,a,b;
 		bool t[4];
+		t[0] = 0;
+		t[1] = 0;
+		t[2] = 0;
+		t[3] = 0;
 		
-		aX = quad.tl.x - quad.bl.x;
-		aY = quad.tl.y - quad.bl.y;
+		Quad mQuad;
+
+		/*　　　〇tr
+		〇tl
+		
+		　　　　　〇br
+		　〇bl
+		*/
+		if (quad.tl.x < quad.bl.x && quad.tl.x <= quad.tr.x) {
+			mQuad = quad;
+		}
+		/*　　　〇br
+		〇tr
+
+		　　　　　〇bl
+		　〇tl
+		*/
+		else if (quad.tl.x > quad.tr.x && quad.tl.x < quad.br.x) {
+			mQuad.tl = quad.tr;
+			mQuad.tr = quad.br;
+			mQuad.br = quad.bl;
+			mQuad.bl = quad.tl;
+		}
+		/*　　　〇bl
+		〇br
+
+		　　　　　〇tl
+		　〇tr
+		*/
+		else if(quad.tl.x > quad.tr.x && quad.tl.x > quad.bl.x){
+			mQuad.tl = quad.br;
+			mQuad.br = quad.tl;
+			mQuad.tr = quad.bl;
+			mQuad.bl = quad.tr;
+		}
+		/*　　　〇tl
+		〇bl
+
+		　　　　　〇tr
+		　〇br
+		*/
+		else {
+			mQuad.tl = quad.bl;
+			mQuad.bl = quad.br;
+			mQuad.br = quad.tr;
+			mQuad.tr = quad.tl;
+		}
+
+		aX = mQuad.tl.x - mQuad.bl.x;
+		aY = mQuad.tl.y - mQuad.bl.y;
 
 		if (aX != 0) {
 			a = aY / aX;
-			b = quad.tl.y - a * quad.tl.x;
+			b = mQuad.tl.y - a * mQuad.tl.x;
 
 			if (a * (float)x + b > (float)y) {
 				t[0] = true;
@@ -42,18 +94,18 @@ public:
 			}
 		}
 		else {
-			if (x > quad.tl.x) {
+			if (x > mQuad.tl.x) {
 				t[0] = true;
 				//DrawString(10, 10, "HIT", Parameter::COLOR_WHITE, 0);
 			}
 		}
 
-		aX = quad.tr.x - quad.br.x;
-		aY = quad.tr.y - quad.br.y;
+		aX = mQuad.tr.x - mQuad.br.x;
+		aY = mQuad.tr.y - mQuad.br.y;
 
 		if (aX != 0) {
 			a = aY / aX;
-			b = quad.tr.y - a * quad.tr.x;
+			b = mQuad.tr.y - a * mQuad.tr.x;
 
 			if (a * (float)x + b < (float)y) {
 				t[1] = true;
@@ -61,18 +113,18 @@ public:
 			}
 		}
 		else {
-			if (x < quad.tr.x) {
+			if (x < mQuad.tr.x) {
 				t[1] = true;
 				//DrawString(10, 30, "HIT", Parameter::COLOR_WHITE, 0);
 			}
 		}
 
-		aX = quad.tr.x - quad.tl.x;
-		aY = quad.tr.y - quad.tl.y;
+		aX = mQuad.tr.x - mQuad.tl.x;
+		aY = mQuad.tr.y - mQuad.tl.y;
 
 		if (aY != 0) {
 			a = aY / aX;
-			b = quad.tl.y - a * quad.tl.x;
+			b = mQuad.tl.y - a * mQuad.tl.x;
 
 			if (a * (float)x + b < (float)y) {
 				t[2] = true;
@@ -80,18 +132,18 @@ public:
 			}
 		}
 		else {
-			if (y > quad.tl.y) {
+			if (y > mQuad.tl.y) {
 				t[2] = true;
 				//DrawString(10, 50, "HIT", Parameter::COLOR_WHITE, 0);
 			}
 		}
 
-		aX = quad.br.x - quad.bl.x;
-		aY = quad.br.y - quad.bl.y;
+		aX = mQuad.br.x - mQuad.bl.x;
+		aY = mQuad.br.y - mQuad.bl.y;
 
 		if (aY != 0) {
 			a = aY / aX;
-			b = quad.bl.y - a * quad.bl.x;
+			b = mQuad.bl.y - a * mQuad.bl.x;
 
 			if (a * (float)x + b > (float)y) {
 				t[3] = true;
@@ -99,7 +151,7 @@ public:
 			}
 		}
 		else {
-			if (y < quad.bl.y) {
+			if (y < mQuad.bl.y) {
 				t[3] = true;
 				//DrawString(10, 70, "HIT", Parameter::COLOR_WHITE, 0);
 			}
@@ -108,5 +160,5 @@ public:
 		if(t[0] && t[1] && t[2] && t[3])return true;
 		return false;
 	}
-	*/
+	
 };

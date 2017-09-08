@@ -26,6 +26,7 @@ public:
 	void DrawLayer1();
 	void DrawLayer2();
 	void DrawLayer3();
+	void DrawFire();
 
 private:
 	AnimationController() {}

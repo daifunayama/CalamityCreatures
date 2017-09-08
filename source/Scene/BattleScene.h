@@ -24,6 +24,7 @@ private:
 	Enemy* mEnemy;
 	//HPGauge mHPGauge[2];					//HPゲージ
 	//BackGround mBackGround;					//背景
+	int mBack;
 
 	int mBGM;								//BGMのサウンドハンドル
 };

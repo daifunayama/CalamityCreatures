@@ -1985,31 +1985,31 @@ Quad Player::getPartQuad(const char* name) {
 	l = sqrtf(pow(state.size_X * state.scaleX * state.pivotX, 2.0) + pow(state.size_Y * state.scaleY * state.pivotY, 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * state.pivotY, state.size_X * state.scaleX * state.pivotX);
 
-	quad.tl().x() = state.x - l * cosf(seta - state.rotationZ * Parameter::PI / 180);
-	quad.tl().y() = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.tl.x = state.x - l * cosf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.tl.y = (Parameter::WINDOW_HEIGHT - state.y) - l * sinf(seta - state.rotationZ * Parameter::PI / 180);
 
-	DrawFormatString(300, 10, Parameter::COLOR_WHITE, "%5f", state.rotationZ);
+	//DrawFormatString(300, 10, Parameter::COLOR_WHITE, "%5f", state.rotationZ);
 
 
 	l = sqrtf(pow(state.size_X * state.scaleX * (1.0f - state.pivotX), 2.0) + pow(state.size_Y * state.scaleY * state.pivotY, 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * state.pivotY, state.size_X * state.scaleX * (1.0f - state.pivotX));
 
-	quad.tr().x() = state.x + l * cosf(seta + state.rotationZ * Parameter::PI / 180);
-	quad.tr().y() = (Parameter::GROUND_LINE - state.y + 20) - l * sinf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.tr.x = state.x + l * cosf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.tr.y = (Parameter::WINDOW_HEIGHT - state.y) - l * sinf(seta + state.rotationZ * Parameter::PI / 180);
 
 
 	l = sqrtf(pow(state.size_X * state.scaleX * state.pivotX, 2.0) + pow(state.size_Y * state.scaleY * (1.0f - state.pivotY), 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * (1.0f - state.pivotY), state.size_X * state.scaleX * state.pivotX);
 
-	quad.bl().x() = state.x - l * cosf(seta + state.rotationZ * Parameter::PI / 180);
-	quad.bl().y() = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.bl.x = state.x - l * cosf(seta + state.rotationZ * Parameter::PI / 180);
+	quad.bl.y = (Parameter::WINDOW_HEIGHT - state.y) + l * sinf(seta + state.rotationZ * Parameter::PI / 180);
 
 
 	l = sqrtf(pow(state.size_X * state.scaleX * (1.0f - state.pivotX), 2.0) + pow(state.size_Y * state.scaleY * (1.0f - state.pivotY), 2.0));
 	seta = atan2f(state.size_Y * state.scaleY * (1.0f - state.pivotY), state.size_X * state.scaleX * (1.0f - state.pivotX));
 
-	quad.br().x() = state.x + l * cosf(seta - state.rotationZ * Parameter::PI / 180);
-	quad.br().y() = (Parameter::GROUND_LINE - state.y + 20) + l * sinf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.br.x = state.x + l * cosf(seta - state.rotationZ * Parameter::PI / 180);
+	quad.br.y = (Parameter::WINDOW_HEIGHT - state.y) + l * sinf(seta - state.rotationZ * Parameter::PI / 180);
 
 	return quad;
 }
@@ -3275,6 +3275,14 @@ void Player::checkUserData(int frameNo)
 		SSonUserData(this, &_userData);
 	}
 
+}
+
+float Player::getPositionX() {
+	return _state.x;
+}
+
+float Player::getPositionY() {
+	return _state.y;
 }
 
 void  Player::setPosition(float x, float y)
