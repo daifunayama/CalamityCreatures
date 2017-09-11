@@ -172,7 +172,7 @@ void Enemy::Draw(Player &player) {
 
 			mSprite->getPartState(state, pass.c_str());
 
-			if (player.getCatchId() > 100 && n == player.getCatchId() - 101) {
+			if (player.getCatchId() > 100 && n == player.getCatchId() - 101 && player.getBoltBreakCounter() > 10) {
 				DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1, 
 					player.getBoltBreakCounter()*2-state.rotationZ * Parameter::PI / 180, mGraphBolt, 1, 0);
 			}

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SpriteStudioCellMap version="1.00.02">
+	<name>heroinsprite</name>
+	<exportPath></exportPath>
+	<generator>SpriteStudio</generator>
+	<packed>0</packed>
+	<imagePath>heroinsprite.png</imagePath>
+	<pixelSize>2048 2048</pixelSize>
+	<overrideTexSettings>0</overrideTexSettings>
+	<wrapMode>clamp</wrapMode>
+	<filterMode>linear</filterMode>
+	<imagePathAtImport></imagePathAtImport>
+	<packInfoFilePath></packInfoFilePath>
+	<texPackSettings>
+		<maxSize>4096 4096</maxSize>
+		<forcePo2>1</forcePo2>
+		<forceSquare>0</forceSquare>
+		<margin>0</margin>
+		<padding>1</padding>
+	</texPackSettings>
+	<cells>
+		<cell>
+			<name>face</name>
+			<pos>61 42</pos>
+			<size>194 222</size>
+			<pivot>0.00515463901683688 -0.351351350545883</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>face2</name>
+			<pos>772 62</pos>
+			<size>173 205</size>
+			<pivot>-0.0144508667290211 -0.265853673219681</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body1-2</name>
+			<pos>768 290</pos>
+			<size>174 312</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body2-2</name>
+			<pos>786 636</pos>
+			<size>152 152</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body3-2</name>
+			<pos>760 824</pos>
+			<size>182 186</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_foot1-2</name>
+			<pos>882 1036</pos>
+			<size>84 174</size>
+			<pivot>0.0119047621265054 0.373563230037689</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_arm2-2</name>
+			<pos>1028 70</pos>
+			<size>102 238</size>
+			<pivot>-0.117647059261799 -0.373949587345123</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>case2</name>
+			<pos>428 1430</pos>
+			<size>282 588</size>
+			<pivot>0.0744680836796761 0.00340136047452688</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_foot2-2</name>
+			<pos>880 1236</pos>
+			<size>80 286</size>
+			<pivot>0.0500000007450581 0.451048940420151</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_foot2-2</name>
+			<pos>758 1236</pos>
+			<size>84 282</size>
+			<pivot>-0.0238095242530107 0.436170220375061</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_foot1-2</name>
+			<pos>770 1036</pos>
+			<size>76 176</size>
+			<pivot>-0.039473682641983 0.357954531908035</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>eye</name>
+			<pos>281 171</pos>
+			<size>61 44</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>hair</name>
+			<pos>353 38</pos>
+			<size>192 244</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>hair2</name>
+			<pos>547 120</pos>
+			<size>58 147</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>mayuge</name>
+			<pos>287 116</pos>
+			<size>53 38</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>mouth</name>
+			<pos>304 241</pos>
+			<size>24 21</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>neck</name>
+			<pos>145 299</pos>
+			<size>71 80</size>
+			<pivot>0.0211267601698637 -0.162499994039536</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body1</name>
+			<pos>101 422</pos>
+			<size>160 270</size>
+			<pivot>0.0437499992549419 -0.385185182094574</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body2</name>
+			<pos>382 450</pos>
+			<size>132 146</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body3</name>
+			<pos>366 652</pos>
+			<size>182 193</size>
+			<pivot>-0.00549450563266873 0.287564754486084</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_arm1</name>
+			<pos>62 713</pos>
+			<size>89 216</size>
+			<pivot>0.0393258444964886 0.319444447755814</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_arm2</name>
+			<pos>70 958</pos>
+			<size>73 186</size>
+			<pivot>0.0753424689173698 0.408602148294449</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_arm1</name>
+			<pos>185 720</pos>
+			<size>77 206</size>
+			<pivot>-0.0454545468091965 0.354368925094604</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_arm2</name>
+			<pos>192 960</pos>
+			<size>84 190</size>
+			<pivot>-0.0595238097012043 0.394736856222153</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_foot1</name>
+			<pos>370 882</pos>
+			<size>82 192</size>
+			<pivot>0.0365853644907475 0.348958343267441</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>right_foot2</name>
+			<pos>365 1092</pos>
+			<size>89 298</size>
+			<pivot>0.0280898883938789 0.399328857660294</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_foot1</name>
+			<pos>509 880</pos>
+			<size>77 189</size>
+			<pivot>0.0194805189967155 0.425925940275192</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>left_foot2</name>
+			<pos>494 1100</pos>
+			<size>137 285</size>
+			<pivot>-0.12773722410202 0.429824560880661</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>case</name>
+			<pos>98 1420</pos>
+			<size>280 584</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+	</cells>
+</SpriteStudioCellMap>

@@ -51,7 +51,13 @@ private:
 	int mAnimeCatch;
 	int mAnimeCatchKey;
 
+	int mGraphShadow;
+	int mGraphStopper;
+
 	int mSoundBreath;
 	int mSoundCatch;
+	int mSoundStep;
+	int mSoundJump;
+	int mSoundLand;
 	int mSoundBreakBolt;
 };

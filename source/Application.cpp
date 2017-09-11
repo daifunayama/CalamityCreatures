@@ -37,5 +37,5 @@ void Application::MainLoop() {
 /*キャラスプライトのリソース追加*/
 void  Application::AddSpriteResource() {
 	Application::resman->addData("Data/E1/spider.ssbp");
-	Application::resman->addData("Data/heroine/heroine.ssbp");
+	Application::resman->addData("Data/heroine/chisel.ssbp");
 }
