@@ -126,9 +126,9 @@
 		<value>blood.ssee</value>
 	</effectFileNames>
 	<lastAnimeFile>spider.ssae</lastAnimeFile>
-	<lastAnimeName>angry</lastAnimeName>
+	<lastAnimeName>anime_1</lastAnimeName>
 	<lastCellMapFile>spider.ssce</lastCellMapFile>
 	<lastEffectFile>blood.ssee</lastEffectFile>
-	<lastCell>joint1</lastCell>
-	<lastPart>joint1_1</lastPart>
+	<lastCell>bolt1</lastCell>
+	<lastPart>boltPosition2</lastPart>
 </SpriteStudioProject>

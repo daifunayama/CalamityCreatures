@@ -28,6 +28,7 @@ public:
 
 private:
 	Controller mController;
+	Enemy *mEnemy;
 	int mGraph;
 
 	int mBoltBreakCounter;
@@ -53,6 +54,11 @@ private:
 
 	int mGraphShadow;
 	int mGraphStopper;
+
+	int mGraphBreak1;
+	int mGraphBreak2;
+	int mGraphBreakL;
+	int mGraphBreakR;
 
 	int mSoundBreath;
 	int mSoundCatch;

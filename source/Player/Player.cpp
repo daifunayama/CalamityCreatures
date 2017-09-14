@@ -26,6 +26,11 @@ void Player::Load() {
 	mGraphShadow = LoadGraph("Data/heroine/shadow.png");
 	mGraphStopper = LoadGraph("Data/heroine/stop.png");
 
+	mGraphBreak1 = LoadGraph("Data/graphic/ui/break1.png");
+	mGraphBreak2 = LoadGraph("Data/graphic/ui/break2.png");
+	mGraphBreakL = LoadGraph("Data/graphic/ui/break_l.png");
+	mGraphBreakR = LoadGraph("Data/graphic/ui/break_r.png");
+
 	mAnimeFire = LoadGraph("Data/graphic/animation/hibana.png");
 	mAnimeCatch = LoadGraph("Data/graphic/animation/catch.png");
 
@@ -57,6 +62,7 @@ void Player::Move(Enemy &enemy) {
 
 	mController.ConvertInput();
 
+	mEnemy = &enemy;
 
 	//静止・歩行状態のとき
 	if (mState == Parameter::S_PLAYER_NORMAL) {
@@ -379,9 +385,45 @@ void Player::CheckWallHit() {
 }
 
 void Player::Draw() {
-	ss::ResluteState pState;
+	float pX, pY;
+	static int animationCounter = 0,lastCatchId;
+	string pass;
+	ss::ResluteState state, pState;
+
 	mSprite->getPartState(pState, "root");
 
+
+	//ボルトをつかんでいる間ゲージを表示
+	if (mCatchId > 100 && mBoltBreakCounter > 0 && mBoltBreakCounter < 150) {
+		DrawGraph(pState.x - 150 + sin(mBoltBreakCounter *50  * Parameter::PI/180.0) * mBoltBreakCounter/5, 
+			Parameter::WINDOW_HEIGHT - pState.y - 300 , mGraphBreak1, 1);
+
+		DrawRectGraph(pState.x - 150 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter/5, 
+			Parameter::WINDOW_HEIGHT - pState.y - 300 , 0, 0, mBoltBreakCounter * 2, 88, mGraphBreak2, 1, 0);
+
+		if (mBoltBreakCounter == 149 && animationCounter == 0) {
+			animationCounter = 50;
+			lastCatchId = mCatchId;
+		}
+	}
+
+	if (animationCounter > 0 && mBoltBreakCounter == 0) {
+		
+		if(animationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - animationCounter) * 255 / 40);
+
+		pass.clear();
+		pass = "boltPosition" + Utility::IntToString(lastCatchId - 100);
+		mEnemy->getSprite().getPartState(state, pass.c_str());
+		pX = state.x - 150;
+		pY = Parameter::WINDOW_HEIGHT - state.y - 150;
+
+		DrawGraph(pX + animationCounter*6 - 300, pY-animationCounter*1+50, mGraphBreakL, 1);
+		DrawGraph(pX - animationCounter*6 + 300, pY+animationCounter*1-50, mGraphBreakR, 1);
+
+		animationCounter--;
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+	}
+	
 	if(mGround)DrawGraph(pState.x-60,Parameter::WINDOW_HEIGHT - pState.y +95, mGraphShadow, 1);
 
 	if (mBoltBreakCounter > 0) {
@@ -400,9 +442,5 @@ void Player::Draw() {
 
 	//DrawFormatString(10, 50, Parameter::COLOR_RED, "state :%d  catchlength:%5f  catchrad:%5f  catchId:%d", mState, mCatchLength,mCatchRad,mCatchId);
 
-	//ボルトをつかんでいる間ゲージを表示
-	if (mCatchId > 100) {
-		DrawBox(pState.x - 75, Parameter::WINDOW_HEIGHT - pState.y - 200, pState.x + 75, Parameter::WINDOW_HEIGHT - pState.y - 220, Parameter::COLOR_GRAY, 1);
-		DrawBox(pState.x - 75, Parameter::WINDOW_HEIGHT - pState.y - 200, pState.x - 75 + mBoltBreakCounter, Parameter::WINDOW_HEIGHT - pState.y - 220, Parameter::COLOR_RED, 1);
-	}
+
 }
