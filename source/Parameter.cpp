@@ -10,6 +10,7 @@ int Parameter::FONT_15 = -1;
 int Parameter::FONT_20 = -1;
 int Parameter::FONT_20_FERRUM = -1;
 int Parameter::FONT_30 = -1;
+int Parameter::FONT_40 = -1;
 int Parameter::FONT_50_FERRUM = -1;
 int Parameter::FONT_80_FERRUM = -1;
 int Parameter::FONT_100_FERRUM = -1;
@@ -33,6 +34,7 @@ void Parameter::InitFont() {
 	Parameter::FONT_20 = CreateFontToHandle(NULL, 20, 8, DX_FONTTYPE_ANTIALIASING_4X4);
 	Parameter::FONT_20_FERRUM = CreateFontToHandle("Ferrum", 20, 8, DX_FONTTYPE_ANTIALIASING_4X4);
 	Parameter::FONT_30 = CreateFontToHandle(NULL, 30, 8, DX_FONTTYPE_ANTIALIASING_4X4);
+	Parameter::FONT_40 = CreateFontToHandle(NULL, 40, 8, DX_FONTTYPE_ANTIALIASING_4X4);
 	Parameter::FONT_50_FERRUM = CreateFontToHandle("Ferrum", 50, 8, DX_FONTTYPE_ANTIALIASING_4X4);
 	Parameter::FONT_80_FERRUM = CreateFontToHandle("Ferrum", 60, 8, DX_FONTTYPE_ANTIALIASING_4X4);
 	Parameter::FONT_100_FERRUM = CreateFontToHandle("Ferrum", 100, 8, DX_FONTTYPE_ANTIALIASING_4X4);

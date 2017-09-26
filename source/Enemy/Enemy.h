@@ -20,13 +20,14 @@ public:
 	Quad getQuad(const char* name);
 	inline ss::Player getSprite() { return *mSprite; }
 
-	void Load();
-	void LoadGraphic();
-	void Process(Player &player);
-	void BrokenBolt(int id);
+	virtual void Load();
+	virtual void LoadGraphic();
+	virtual void Process(Player &player);
+	virtual void BrokenBolt(int id);
 	void Draw(Player &player);
+	virtual void DrawBullet(){}
 
-private:
+protected:
 	int mPositionX;
 	int mPositionY;
 	ss::Player *mSprite;

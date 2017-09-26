@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene\Scene.h"
+#include "Scene\NovelScene.h"
 #include "Scene/BattleScene.h"
 #include "SSPlayer/SS5Player.h"
 #include "Parameter.h"
@@ -16,9 +17,15 @@ public:
 		resman = ss::ResourceManager::getInstance();
 		AddSpriteResource();
 	
-		mScene = new BattleScene();
-		mOldSceneId = Parameter::SCENE_BATTLE;
-	
+		WaitKey();
+		if (CheckHitKey(KEY_INPUT_N)) {
+			mScene = new NovelScene();
+			mOldSceneId = Parameter::SCENE_NOVEL;
+		}
+		else {
+			mScene = new BattleScene();
+			mOldSceneId = Parameter::SCENE_BATTLE;
+		}
 		mNextSceneId = mOldSceneId;
 	}
 	~Application(){}

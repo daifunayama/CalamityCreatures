@@ -35,6 +35,11 @@ public:
 		
 		Quad mQuad;
 
+		if (quad.tl.x == quad.bl.x) {
+			if (quad.tl.x < x && x < quad.tr.x && quad.tl.y < y && y < quad.bl.y)return true;
+			else return false;
+		}
+
 		/*@@@Ztr
 		Ztl
 		

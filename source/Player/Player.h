@@ -23,6 +23,9 @@ public:
 	void DoJump();
 	void CheckWallHit();
 	void Catch();
+	void Catching();
+	void Riding();
+	void UpdateAnimation();
 
 	void Draw();
 
@@ -59,6 +62,8 @@ private:
 	int mGraphBreak2;
 	int mGraphBreakL;
 	int mGraphBreakR;
+	int mGraphRepair1;
+	int mGraphRepaie2;
 
 	int mSoundBreath;
 	int mSoundCatch;

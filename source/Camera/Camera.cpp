@@ -4,6 +4,9 @@
 void Camera::Init() {
 	mPositionX = 0;
 	mPositionY = 0;
+	quakeX = 0;
+	quakeY = 0;
+	quakeCounter = 0;
 }
 
 void Camera::Follow(int pX, int pY, int speed) {
@@ -17,18 +20,17 @@ void Camera::Follow(int pX, int pY, int speed) {
 
 	distAngle = atan2(distY, distX);
 
-	if (distX > 170 || distX < -170) {
+	if (distX > 270 || distX < -270) {
 		speedX = speed;
 	}
-	else speedX = abs(distX / 10);
+	else speedX = abs(distX / 5);
 
-	if (distY > 170 || distY < -170) {
-		speedY = 50;
+	if (distY > 270 || distY < -270) {
+		speedY = speed;
 	}
-	else if (distY > 70 || distY < -70) {
-		speedY = 20;
-	}
-	else speedY = abs(distY / 10);
+	else speedY = abs(distY / 5);
+
+	//else speedY = abs(distY / 10);
 
 	moveX = (double)cos(distAngle) * speedX;
 	moveY = (double)sin(distAngle) * speedY;
@@ -38,6 +40,8 @@ void Camera::Follow(int pX, int pY, int speed) {
 
 	mPositionX += (int)moveX;
 	mPositionY += (int)moveY;
+
+	
 }
 
 void Camera::Update(Player p1, Enemy enemy) {
@@ -56,7 +60,7 @@ void Camera::Update(Player p1, Enemy enemy) {
 	}
 
 	if (p1.getState() == Parameter::S_PLAYER_CATCH) {
-		Follow(moveX, moveY,10);
+		Follow(moveX, moveY,30);
 	}
 
 	else {
@@ -68,5 +72,25 @@ void Camera::Update(Player p1, Enemy enemy) {
 		Follow(moveX, moveY, 30);
 	}
 
+	QuakeWindow();
 }
 
+void Camera::SetQuakeWindow(int counter, int level) {
+	quakeCounter = counter;
+	quakeLevel = level;
+}
+
+void Camera::QuakeWindow() {
+	if (quakeCounter > 0) {
+
+		//quakeX = sin(quakeCounter * Parameter::PI / 180) * 20;
+		quakeY = cos(quakeCounter * 50 * Parameter::PI / 180) * quakeLevel;
+
+		quakeCounter--;
+	}
+	else {
+		quakeLevel = 0;
+		quakeX = 0;
+		quakeY = 0;
+	}
+}

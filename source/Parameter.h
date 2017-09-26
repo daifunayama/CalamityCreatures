@@ -16,6 +16,7 @@ public:
 	static int FONT_20;
 	static int FONT_20_FERRUM;
 	static int FONT_30;
+	static int FONT_40;
 	static int FONT_50_FERRUM;
 	static int FONT_80_FERRUM;
 	static int FONT_100_FERRUM;
@@ -23,22 +24,10 @@ public:
 
 	//シーンID
 	static const int SCENE_TITLE = 1;
-	static const int SCENE_CHARASELECT = 2;
+	static const int SCENE_NOVEL = 2;
 	static const int SCENE_CONTRACT = 3;
 	static const int SCENE_EYECATCH = 4;
 	static const int SCENE_BATTLE = 5;
-
-	//魔具のカテゴリID
-	static const int HK = 0;
-	static const int CM = 1;
-	static const int MG = 2;
-	static const int YT = 3;
-	static const int HC = 4;
-	static const int EA = 5;
-	static const int AA = 6;
-	static const int HR = 7;
-	static const int MJ = 8;
-	static const int PS = 9;
 
 
 	//プレイヤーの状態
@@ -47,33 +36,8 @@ public:
 	static const int S_PLAYER_BACK = 3;
 	static const int S_PLAYER_SQUAT = 4;
 	static const int S_PLAYER_JUMP = 5;
-	static const int S_PLAYER_DAMAGE_U = 6;
-	static const int S_PLAYER_DAMAGE_D = 7;
-	static const int S_PLAYER_DAMAGE_AIR = 8;
-	static const int S_PLAYER_DAMAGE_AIR2 = 9;
-	static const int S_PLAYER_DAMAGE_S = 10;
-	static const int S_PLAYER_SUMMON = 11;
-	static const int S_PLAYER_DASH = 12;
-	static const int S_PLAYER_STEP = 13;
-	static const int S_PLAYER_GUARD = 14;
-	static const int S_PLAYER_GUARD_S = 15;
-	static const int S_PLAYER_STOP = 16;
-	static const int S_PLAYER_DOWN = 17;
-	static const int S_PLAYER_ATACK_A = 18;
-	static const int S_PLAYER_ATACK_8A = 19;
-	static const int S_PLAYER_ATACK_2A = 20;
-	static const int S_PLAYER_ATACK_JA = 21;
-	static const int S_PLAYER_ATACK_B = 22;
-	static const int S_PLAYER_ATACK_8B = 23;
-	static const int S_PLAYER_ATACK_2B = 24;
-	static const int S_PLAYER_ATACK_JB = 25;
-	static const int S_PLAYER_ATACK_3B = 26;
-	static const int S_PLAYER_ATACK_6B = 27;
 	static const int S_PLAYER_CATCH = 28;
-	static const int S_PLAYER_CAUGHT = 29;
-	static const int S_PLAYER_ESCAPE = 30;
-	static const int S_PLAYER_THROW = 31;
-	static const int S_PLAYER_BURST = 32;
+	static const int S_PLAYER_RIDE = 6;
 
 	//画面定義
 	static const int WINDOW_WIDTH = 1280;

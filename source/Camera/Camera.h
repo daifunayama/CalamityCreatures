@@ -17,8 +17,8 @@ public:
 	Camera(Camera&&) = delete;
 	Camera operator = (Camera&&) = delete;
 
-	inline int getPositonX() { return mPositionX; }
-	inline int getPositonY() { return mPositionY; }
+	inline int getPositonX() { return mPositionX + quakeX; }
+	inline int getPositonY() { return mPositionY + quakeY; }
 	inline int getCenterX() { return mCenterX; }
 	inline int getCenterY() { return mCenterY; }
 
@@ -29,11 +29,18 @@ public:
 	void Init();
 	void Update(Player p1, Enemy enemy);
 
+	void SetQuakeWindow(int counter, int level);
+	void QuakeWindow();
+
 private:
 	int mPositionX;		//カメラのX座標
 	int mPositionY;		//カメラのY座標
 	int mCenterX;		//画面中央のX座標
 	int mCenterY;		//画面中央のY座標
+	float quakeX;
+	float quakeY;
+	int quakeCounter;
+	int quakeLevel;
 
 private:
 	void Follow(int, int,int);

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SpriteStudioCellMap version="1.00.02">
+	<name>armor</name>
+	<exportPath></exportPath>
+	<generator>SpriteStudio</generator>
+	<packed>0</packed>
+	<imagePath>armor.png</imagePath>
+	<pixelSize>2048 2048</pixelSize>
+	<overrideTexSettings>0</overrideTexSettings>
+	<wrapMode>clamp</wrapMode>
+	<filterMode>linear</filterMode>
+	<imagePathAtImport></imagePathAtImport>
+	<packInfoFilePath></packInfoFilePath>
+	<texPackSettings>
+		<maxSize>4096 4096</maxSize>
+		<forcePo2>1</forcePo2>
+		<forceSquare>0</forceSquare>
+		<margin>0</margin>
+		<padding>1</padding>
+	</texPackSettings>
+	<cells>
+		<cell>
+			<name>head_armor</name>
+			<pos>16 6</pos>
+			<size>422 348</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>head</name>
+			<pos>24 362</pos>
+			<size>404 364</size>
+			<pivot>-0.00990098994225264 -0.387362629175186</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>eye</name>
+			<pos>502 88</pos>
+			<size>176 180</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>armor</name>
+			<pos>4 734</pos>
+			<size>430 654</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body2</name>
+			<pos>458 1842</pos>
+			<size>330 184</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>foot1</name>
+			<pos>534 520</pos>
+			<size>174 402</size>
+			<pivot>0 0.457711428403854</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>foot2</name>
+			<pos>546 1100</pos>
+			<size>140 474</size>
+			<pivot>-0.0214285720139742 0.485232055187225</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>arm2</name>
+			<pos>820 558</pos>
+			<size>94 356</size>
+			<pivot>0.0212765950709581 0.455056190490723</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>hit</name>
+			<pos>841 369</pos>
+			<size>80 80</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>boltPosition</name>
+			<pos>798 332</pos>
+			<size>153 152</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>sword</name>
+			<pos>822 1156</pos>
+			<size>1038 152</size>
+			<pivot>-0.475915223360062 0.00657894741743803</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>shield</name>
+			<pos>1130 382</pos>
+			<size>604 694</size>
+			<pivot>0.00165562913753092 0.0864553302526474</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>ride1</name>
+			<pos>993 1389</pos>
+			<size>853 61</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>joint1</name>
+			<pos>544 332</pos>
+			<size>166 160</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>body1</name>
+			<pos>44 1394</pos>
+			<size>349 540</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+		<cell>
+			<name>joint2</name>
+			<pos>577 953</pos>
+			<size>97 104</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
+	</cells>
+</SpriteStudioCellMap>

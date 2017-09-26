@@ -1,7 +1,9 @@
 #include "BattleScene.h"
 #include "../Input/Input.h"
 #include "../Effekseer/AnimationController.h"
+#include "../Enemy/Enemys/E0.h"
 #include "../Enemy/Enemys/E1.h"
+#include "../Enemy/Enemys/E2.h"
 #include "../Camera/Camera.h"
 
 /*リソースのロードと初期化*/
@@ -10,7 +12,9 @@ void BattleScene::Load() {
 
 	mPlayer.Load();
 
-	mEnemy = new E1();
+	if (CheckHitKey(KEY_INPUT_1))mEnemy = new E1();
+	if (CheckHitKey(KEY_INPUT_2))mEnemy = new E2();
+	else mEnemy = new E0();
 	mEnemy->Load();
 	mEnemy->LoadGraphic();
 }
@@ -40,4 +44,6 @@ void BattleScene::Drawing() {
 	AnimationController::getInstance().DrawLayer2();
 
 	mPlayer.Draw();
+
+	mEnemy->DrawBullet();
 }

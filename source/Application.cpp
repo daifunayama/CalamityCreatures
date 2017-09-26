@@ -1,7 +1,7 @@
 #include "Application.h"
 #include "Input/Input.h"
-#include "SSPlayer\SS5Player.h"
-#include "Effekseer\AnimationController.h"
+#include "SSPlayer/SS5Player.h"
+#include "Effekseer/AnimationController.h"
 #include "DxLib.h"
 
 int Application::mOldSceneId = Parameter::SCENE_TITLE;
@@ -21,6 +21,10 @@ void Application::MainLoop() {
 
 		switch (mNextSceneId) {
 
+		case Parameter::SCENE_NOVEL:
+			mScene = new NovelScene();
+			break;
+
 		case Parameter::SCENE_BATTLE :
 			mScene = new BattleScene();
 			break;
@@ -36,6 +40,8 @@ void Application::MainLoop() {
 
 /*キャラスプライトのリソース追加*/
 void  Application::AddSpriteResource() {
+	Application::resman->addData("Data/E0/mill.ssbp");
 	Application::resman->addData("Data/E1/spider.ssbp");
+	Application::resman->addData("Data/E2/armor.ssbp");
 	Application::resman->addData("Data/heroine/chisel.ssbp");
 }

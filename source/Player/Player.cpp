@@ -65,7 +65,7 @@ void Player::Move(Enemy &enemy) {
 	mEnemy = &enemy;
 
 	//静止・歩行状態のとき
-	if (mState == Parameter::S_PLAYER_NORMAL) {
+	if (mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) {
 
 		//右方向への移動
 		if (mController.getRight() > 0) {
@@ -78,7 +78,7 @@ void Player::Move(Enemy &enemy) {
 		}
 	}
 
-	if (mState == Parameter::S_PLAYER_NORMAL) {
+	if (mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) {
 		//ジャンプする
 		if (mController.getKey(4) == 1) {
 
@@ -91,151 +91,18 @@ void Player::Move(Enemy &enemy) {
 
 	//機体をつかむ
 	if (mState == Parameter::S_PLAYER_NORMAL) {
+		Catch();
 
-		if (mController.getKey(5) == 1)mCatching = true;
-		if (!mController.getKey(5)) mCatching = false;
-
-		mSprite->getPartState(pState, "root");
-
-		for (int n = 0; n < enemy.getNumHit(); n++) {
-			if (enemy.getHitExist(n)) {
-				pass.clear();
-				pass = "hit" + Utility::IntToString(n + 1);
-				mQuad = enemy.getQuad(pass.c_str());
-
-				if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y-150) && mCatching && mCatchId == 0) {
-				
-					enemy.getSprite().getPartState(state, pass.c_str());
-
-					mState = Parameter::S_PLAYER_CATCH;
-					mCatchRad = -atan2f(state.y - pState.y-150, state.x - pState.x) + state.rotationZ * Parameter::PI / 180;
-					mCatchLength = sqrtf(pow(state.x - pState.x, 2.0) + pow(state.y - pState.y-150, 2.0));
-
-					mCatchId = n+1;
-
-					mAcceleX = 0;
-					mAcceleY = 0;
-
-					PlaySoundMem(mSoundCatch, DX_PLAYTYPE_BACK);
-
-					mAnimeCatchKey = AnimationController::getInstance().Create(mAnimeCatch, 2, mPositionDX, mPositionDY, 300, 300, 0.6, 0, 4, 1, 20, -1, 0, 1);
-				}
-			}
-		}
-
-		for (int n = 0; n < enemy.getNumBolt(); n++) {
-			if (enemy.getBoltExist(n)) {
-				pass.clear();
-				pass = "bolt" + Utility::IntToString(n + 1);
-				mQuad = enemy.getQuad(pass.c_str());
-
-				if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y-150) && mCatching && mCatchId == 0) {
-
-					mState = Parameter::S_PLAYER_CATCH;
-					mCatchRad = 0;
-					mCatchLength = 0;
-
-					mCatchId = n + 101;
-
-					mAcceleX = 0;
-					mAcceleY = 0;
-
-					PlaySoundMem(mSoundCatch, DX_PLAYTYPE_BACK);
-				}
-			}
-		}
 	}
 	
 	//つかみ状態
 	if (mState == Parameter::S_PLAYER_CATCH) {
-		AnimationController::getInstance().SetPosition(mAnimeCatchKey, mPositionDX, mPositionDY-150);
-
-		if (!mController.getKey(5)) {
-			mCatching = false;
-			mGround = false;
-			mState = Parameter::S_PLAYER_NORMAL;
-			mCatchId = 0;
-			mBoltBreakCounter = 0;
-		}
-		else {
-			if (mController.getKey(4) == 1) {
-				mState = Parameter::S_PLAYER_NORMAL;
-				mCatching = false;
-				DoJump();
-				mCatchId = 0;
-				mBoltBreakCounter = 0;
-			}
-			else {
-				if (mCatchId != 0) {
-
-					//はりつきポイント
-					if (enemy.getHitExist(mCatchId-1)) {
-						pass.clear();
-						pass = "hit" + Utility::IntToString(mCatchId);
-
-						enemy.getSprite().getPartState(state, pass.c_str());
-
-						mSprite->setPosition(state.x - mCatchLength * cosf(mCatchRad - state.rotationZ * Parameter::PI / 180),
-							state.y -150 + mCatchLength * sinf(mCatchRad - state.rotationZ * Parameter::PI / 180));
-
-						mSprite->getPartState(pState, "root");
-						mPositionDX = pState.x + Camera::getInstance().getPositonX();
-						mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
-					}
-
-					//ボルト
-					if (mCatchId > 100) {
-						if (enemy.getBoltExist(mCatchId - 101)) {
-							pass.clear();
-							pass = "bolt" + Utility::IntToString(mCatchId-100);
-
-							enemy.getSprite().getPartState(state, pass.c_str());
-
-							mSprite->setPosition(state.x,state.y - 150);
-
-							mSprite->getPartState(pState, "root");
-							mPositionDX = pState.x + Camera::getInstance().getPositonX();
-							mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
-
-							if (mController.getKey(6) == 1) {
-								mBoltBreakCounter = 1;
-								
-								mAnimeFireKey = AnimationController::getInstance().Create(mAnimeFire, 11, mPositionDX, mPositionDY, 100, 250, 4, 0, 16, 2, 250, -1, 0, 1);
-							}
-							if (mController.getKey(6) && mBoltBreakCounter) {
-								mBoltBreakCounter++;
-								AnimationController::getInstance().SetPosition(mAnimeFireKey, mPositionDX, mPositionDY+250);
-							}
-							if (!mController.getKey(6)) {
-								mBoltBreakCounter = 0;
-								if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
-								AnimationController::getInstance().Remove(mAnimeFireKey);
-							}
-
-							if (mBoltBreakCounter == 10) {
-								PlaySoundMem(mSoundBreakBolt, DX_PLAYTYPE_BACK);
-							}
-
-							if (mBoltBreakCounter >= 150) {
-								enemy.BrokenBolt(mCatchId - 100);
-								mCatching = false;
-								mState = Parameter::S_PLAYER_NORMAL;
-								mCatchId = 0;
-								mBoltBreakCounter = 0;
-								mAcceleY = 42;
-								if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
-								AnimationController::getInstance().Remove(mAnimeFireKey);
-							}
-						}
-					}
-				}
-			}
-		}
+		Catching();
 	}
 
 	//加速度を0にする
 	if ((!mController.getRight() && !mController.getLeft())
-		&& mGround && mState == Parameter::S_PLAYER_NORMAL)
+		&& mGround)
 	{
 		mAcceleX = 0;
 	}
@@ -254,11 +121,13 @@ void Player::Move(Enemy &enemy) {
 	mPositionX = (int)mPositionDX;
 	mPositionY = (int)mPositionDY;
 
+	Riding();
+
 	//壁と床の接触判定
 	CheckWallHit();
 
 
-	if (mState == Parameter::S_PLAYER_NORMAL) {
+	if (mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) {
 		mSprite->setPosition(mPositionX - Camera::getInstance().getPositonX(),
 			Parameter::WINDOW_HEIGHT - mPositionY + Camera::getInstance().getPositonY());
 	}
@@ -266,62 +135,202 @@ void Player::Move(Enemy &enemy) {
 
 	}
 
-	if (mCatchId == 0) {
+	UpdateAnimation();
 
-		if (!mGround){
-			if (mAcceleY == 40) {
-				mSprite->play("chisel/jump");
-				mSprite->setStep(0.8f);
-				mSprite->setLoop(1);
-			}
-			else {
-				if (mSprite->getPlayAnimeName() != "jump") {
-					mSprite->play("chisel/jump");
-					mSprite->setStep(0.8f);
-					mSprite->setFrameNo(20);
-					mSprite->setLoop(1);
-				}
-			}
-		}
-		else {
-			if (mAcceleX == 0) {
-				if (mSprite->getPlayAnimeName() != "idle") {
-					mSprite->play("chisel/idle");
-					mSprite->setStep(0.6f);
-				}
-			}
-			else {
-				if (mSprite->getPlayAnimeName() != "dash") {
-					mSprite->play("chisel/dash");
-					mSprite->setStep(0.75f);
-				}
-				if (mSprite->getFrameNo() == 14 || mSprite->getFrameNo() == 40)PlaySoundMem(mSoundStep, DX_PLAYTYPE_BACK);
-			}
-		}
-
-		mSprite->setScale(mRight ? 0.25f : -0.25f, 0.25f);
-	}
-	else {
-		//ボルトを回すとき
-		if (mBoltBreakCounter > 0){
-			if (mSprite->getPlayAnimeName() != "catch2") {
-				mSprite->play("chisel/catch2");
-				mSprite->setStep(0.7f);
-				mSprite->setLoop(1);
-			}
-		}
-		//それ以外
-		else if (mSprite->getPlayAnimeName() != "catch") {
-			mSprite->play("chisel/catch");
-			mSprite->setStep(0.5f);
-		}
-		mSprite->setScale(0.25f, 0.25f);
-	}
-
-	mSprite->update((float)30 / 1000);
 }
 
+/*つかむ*/
 void Player::Catch() {
+	Quad mQuad;
+	ss::ResluteState pState, state;
+	string pass;
+
+	if (mController.getKey(5) == 1)mCatching = true;
+	if (!mController.getKey(5)) mCatching = false;
+
+	mSprite->getPartState(pState, "root");
+
+	for (int n = 0; n < mEnemy->getNumHit(); n++) {
+		if (mEnemy->getHitExist(n)) {
+			pass.clear();
+			pass = "hit" + Utility::IntToString(n + 1);
+			mQuad = mEnemy->getQuad(pass.c_str());
+
+			if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150) && mCatching && mCatchId == 0) {
+
+				mEnemy->getSprite().getPartState(state, pass.c_str());
+
+				mState = Parameter::S_PLAYER_CATCH;
+				mCatchRad = -atan2f(state.y - pState.y - 150, state.x - pState.x) + state.rotationZ * Parameter::PI / 180;
+				mCatchLength = sqrtf(pow(state.x - pState.x, 2.0) + pow(state.y - pState.y - 150, 2.0));
+
+				mCatchId = n + 1;
+
+				mAcceleX = 0;
+				mAcceleY = 0;
+
+				PlaySoundMem(mSoundCatch, DX_PLAYTYPE_BACK);
+
+				mAnimeCatchKey = AnimationController::getInstance().Create(mAnimeCatch, 2, mPositionDX, mPositionDY, 300, 300, 0.6, 0, 4, 1, 20, -1, 0, 1);
+			}
+		}
+	}
+
+	for (int n = 0; n < mEnemy->getNumBolt(); n++) {
+		if (mEnemy->getBoltExist(n)) {
+			pass.clear();
+			pass = "bolt" + Utility::IntToString(n + 1);
+			mQuad = mEnemy->getQuad(pass.c_str());
+
+			if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150) && mCatching && mCatchId == 0) {
+
+				mState = Parameter::S_PLAYER_CATCH;
+				mCatchRad = 0;
+				mCatchLength = 0;
+
+				mCatchId = n + 101;
+
+				mAcceleX = 0;
+				mAcceleY = 0;
+
+				PlaySoundMem(mSoundCatch, DX_PLAYTYPE_BACK);
+			}
+		}
+	}
+}
+
+/*つかみ中*/
+void Player::Catching() {
+	ss::ResluteState pState, state;
+	string pass;
+
+	AnimationController::getInstance().SetPosition(mAnimeCatchKey, mPositionDX, mPositionDY - 150);
+
+	if (!mController.getKey(5)) {
+		mCatching = false;
+		mGround = false;
+		mState = Parameter::S_PLAYER_NORMAL;
+		mCatchId = 0;
+		mBoltBreakCounter = 0;
+	}
+	else {
+		if (mController.getKey(4) == 1) {
+			mState = Parameter::S_PLAYER_NORMAL;
+			mCatching = false;
+			DoJump();
+			mCatchId = 0;
+			mBoltBreakCounter = 0;
+		}
+		else {
+			if (mCatchId != 0) {
+
+				//はりつきポイント
+				if (mEnemy->getHitExist(mCatchId - 1)) {
+					pass.clear();
+					pass = "hit" + Utility::IntToString(mCatchId);
+
+					mEnemy->getSprite().getPartState(state, pass.c_str());
+
+					mSprite->setPosition(state.x - mCatchLength * cosf(mCatchRad - state.rotationZ * Parameter::PI / 180),
+						state.y - 150 + mCatchLength * sinf(mCatchRad - state.rotationZ * Parameter::PI / 180));
+
+					mSprite->getPartState(pState, "root");
+					mPositionDX = pState.x + Camera::getInstance().getPositonX();
+					mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+				}
+
+				//ボルト
+				if (mCatchId > 100) {
+					if (mEnemy->getBoltExist(mCatchId - 101)) {
+						pass.clear();
+						pass = "bolt" + Utility::IntToString(mCatchId - 100);
+
+						mEnemy->getSprite().getPartState(state, pass.c_str());
+
+						mSprite->setPosition(state.x, state.y - 150);
+
+						mSprite->getPartState(pState, "root");
+						mPositionDX = pState.x + Camera::getInstance().getPositonX();
+						mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+
+						if (mController.getKey(6) == 1) {
+							mBoltBreakCounter = 1;
+
+							mAnimeFireKey = AnimationController::getInstance().Create(mAnimeFire, 11, mPositionDX, mPositionDY, 100, 250, 4, 0, 16, 2, 250, -1, 0, 1);
+						}
+						if (mController.getKey(6) && mBoltBreakCounter) {
+							mBoltBreakCounter++;
+							AnimationController::getInstance().SetPosition(mAnimeFireKey, mPositionDX, mPositionDY + 250);
+						}
+						if (!mController.getKey(6)) {
+							mBoltBreakCounter = 0;
+							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
+							AnimationController::getInstance().Remove(mAnimeFireKey);
+						}
+
+						if (mBoltBreakCounter == 10) {
+							PlaySoundMem(mSoundBreakBolt, DX_PLAYTYPE_BACK);
+						}
+
+						if (mBoltBreakCounter >= 150) {
+							mEnemy->BrokenBolt(mCatchId - 100);
+							mCatching = false;
+							mState = Parameter::S_PLAYER_NORMAL;
+							mCatchId = 0;
+							mBoltBreakCounter = 0;
+							mAcceleY = 42;
+							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
+							AnimationController::getInstance().Remove(mAnimeFireKey);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*のり*/
+void Player::Riding() {
+	Quad mQuad;
+	ss::ResluteState pState, state;
+	string pass;
+
+	pass.clear();
+	pass = "ride" + Utility::IntToString(1);
+	mQuad = mEnemy->getQuad(pass.c_str());
+
+	mSprite->getPartState(pState, "root");
+
+	if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y + 130)) {
+		if (mState != Parameter::S_PLAYER_RIDE) {
+			//mAcceleY = 0;
+			mAcceleX = 0;
+			mGround = true;
+			mState = Parameter::S_PLAYER_RIDE;
+		}
+	}
+	else if(mState == Parameter::S_PLAYER_RIDE){
+		mGround = false;
+		mState = Parameter::S_PLAYER_NORMAL;
+	}
+
+	if (mState == Parameter::S_PLAYER_RIDE && Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y + 130)) {
+		
+		while (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y + 100)) {
+			mSprite->setPosition(pState.x, pState.y + 1);
+			mSprite->update(0);
+			mSprite->getPartState(pState, "root");
+		}
+
+		mPositionDX = pState.x + Camera::getInstance().getPositonX();
+		mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+
+		mPositionX = (int)mPositionDX;
+		mPositionY = (int)mPositionDY;
+
+		//mAcceleX = 0;
+		//mAcceleY = 0;
+	}
 
 }
 
@@ -341,6 +350,77 @@ void Player::DoJump() {
 	mGround = false;
 
 	PlaySoundMem(mSoundJump, DX_PLAYTYPE_BACK);
+}
+
+void Player::UpdateAnimation() {
+	if (mCatchId == 0) {
+		if (mState == Parameter::S_PLAYER_RIDE) {
+			if (mAcceleX == 0) {
+				if (mSprite->getPlayAnimeName() != "idle") {
+					mSprite->play("chisel/idle");
+					mSprite->setStep(0.6f);
+				}
+			}
+			else {
+				if (mSprite->getPlayAnimeName() != "dash") {
+					mSprite->play("chisel/dash");
+					mSprite->setStep(0.75f);
+				}
+				if (mSprite->getFrameNo() == 14 || mSprite->getFrameNo() == 40)PlaySoundMem(mSoundStep, DX_PLAYTYPE_BACK);
+			}
+		}
+		else {
+			if (!mGround) {
+				if (mAcceleY == 40) {
+					mSprite->play("chisel/jump");
+					mSprite->setStep(0.8f);
+					mSprite->setLoop(1);
+				}
+				else {
+					if (mSprite->getPlayAnimeName() != "jump") {
+						mSprite->play("chisel/jump");
+						mSprite->setStep(0.8f);
+						mSprite->setFrameNo(20);
+						mSprite->setLoop(1);
+					}
+				}
+			}
+			else {
+				if (mAcceleX == 0) {
+					if (mSprite->getPlayAnimeName() != "idle") {
+						mSprite->play("chisel/idle");
+						mSprite->setStep(0.6f);
+					}
+				}
+				else {
+					if (mSprite->getPlayAnimeName() != "dash") {
+						mSprite->play("chisel/dash");
+						mSprite->setStep(0.75f);
+					}
+					if (mSprite->getFrameNo() == 14 || mSprite->getFrameNo() == 40)PlaySoundMem(mSoundStep, DX_PLAYTYPE_BACK);
+				}
+			}
+		}
+		mSprite->setScale(mRight ? 0.25f : -0.25f, 0.25f);
+	}
+	else {
+		//ボルトを回すとき
+		if (mBoltBreakCounter > 0) {
+			if (mSprite->getPlayAnimeName() != "catch2") {
+				mSprite->play("chisel/catch2");
+				mSprite->setStep(0.7f);
+				mSprite->setLoop(1);
+			}
+		}
+		//それ以外
+		else if (mSprite->getPlayAnimeName() != "catch") {
+			mSprite->play("chisel/catch");
+			mSprite->setStep(0.5f);
+		}
+		mSprite->setScale(0.25f, 0.25f);
+	}
+
+	mSprite->update((float)30 / 1000);
 }
 
 /*壁・床とのヒットチェック*/
@@ -407,6 +487,8 @@ void Player::Draw() {
 		}
 	}
 
+
+	//ブレークアニメーション
 	if (animationCounter > 0 && mBoltBreakCounter == 0) {
 		
 		if(animationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - animationCounter) * 255 / 40);
@@ -424,7 +506,7 @@ void Player::Draw() {
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
 	}
 	
-	if(mGround)DrawGraph(pState.x-60,Parameter::WINDOW_HEIGHT - pState.y +95, mGraphShadow, 1);
+	if(mGround && mState == Parameter::S_PLAYER_NORMAL)DrawGraph(pState.x-60,Parameter::WINDOW_HEIGHT - pState.y +95, mGraphShadow, 1);
 
 	if (mBoltBreakCounter > 0) {
 		if (mBoltBreakCounter < 10)DrawRotaGraph(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 0.08*mBoltBreakCounter, 0, mGraphStopper, 1, 0);
