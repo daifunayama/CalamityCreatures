@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (ColossusBreaker.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  E0.cpp
+  BattleScene.cpp
 c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(13): warning C4099: 'ss::SsCell': タイプ名は最初 'class' として使われていましたが 'struct' として使われています。
   c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_cellmap.h(12): note: 'ss::SsCell' の宣言を確認してください
 c:\gitproject\colossusbreaker\source\ssplayer\common\animator\ssplayer_effect.h(144): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
@@ -11,6 +11,5 @@ c:\gitproject\colossusbreaker\source\quad\quad.h : warning C4819: ファイル�
 c:\gitproject\colossusbreaker\source\player\player.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 c:\gitproject\colossusbreaker\source\camera\camera.h(20): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 c:\gitproject\colossusbreaker\source\camera\camera.h(21): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\gitproject\colossusbreaker\source\enemy\enemys\e0.cpp(59): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.exe
   AncientGear.vcxproj -> C:\GitProject\ColossusBreaker\Debug\AncientGear.pdb (Partial PDB)

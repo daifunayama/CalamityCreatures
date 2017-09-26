@@ -13,8 +13,9 @@ void BattleScene::Load() {
 	mPlayer.Load();
 
 	if (CheckHitKey(KEY_INPUT_1))mEnemy = new E1();
-	if (CheckHitKey(KEY_INPUT_2))mEnemy = new E2();
+	else if (CheckHitKey(KEY_INPUT_2))mEnemy = new E2();
 	else mEnemy = new E0();
+
 	mEnemy->Load();
 	mEnemy->LoadGraphic();
 }
