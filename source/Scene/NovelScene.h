@@ -14,6 +14,7 @@ public:
 	void Load();
 	void Process();
 	void Drawing();
+	void Remove();
 
 private:
 	void LoadFile();

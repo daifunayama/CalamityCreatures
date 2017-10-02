@@ -154,6 +154,7 @@
     <ClCompile Include="source\Enemy\Enemys\E1.cpp" />
     <ClCompile Include="source\Enemy\Enemys\E2.cpp" />
     <ClCompile Include="source\Enemy\Bullet.cpp" />
+    <ClCompile Include="source\HitBox\HitBox.cpp" />
     <ClCompile Include="source\Input\Controller.cpp" />
     <ClCompile Include="source\Input\Input.cpp" />
     <ClCompile Include="source\main.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="source\Scene\BattleScene.cpp" />
     <ClCompile Include="source\Scene\NovelScene.cpp" />
     <ClCompile Include="source\Scene\Scene.cpp" />
+    <ClCompile Include="source\Scene\TitleScene.cpp" />
     <ClCompile Include="source\SSPlayer\common\Animator\ssplayer_effect.cpp" />
     <ClCompile Include="source\SSPlayer\common\Animator\ssplayer_effect2.cpp" />
     <ClCompile Include="source\SSPlayer\common\Animator\ssplayer_effectfunction.cpp" />
@@ -181,6 +183,7 @@
     <ClInclude Include="source\Enemy\Enemys\E0.h" />
     <ClInclude Include="source\Enemy\Enemys\E1.h" />
     <ClInclude Include="source\Enemy\Enemys\E2.h" />
+    <ClInclude Include="source\HitBox\HitBox.h" />
     <ClInclude Include="source\Input\Controller.h" />
     <ClInclude Include="source\Input\Input.h" />
     <ClInclude Include="source\Parameter.h" />
@@ -190,6 +193,7 @@
     <ClInclude Include="source\Scene\BattleScene.h" />
     <ClInclude Include="source\Scene\NovelScene.h" />
     <ClInclude Include="source\Scene\Scene.h" />
+    <ClInclude Include="source\Scene\TitleScene.h" />
     <ClInclude Include="source\SSPlayer\common\Animator\MersenneTwister.h" />
     <ClInclude Include="source\SSPlayer\common\Animator\ssplayer_cellmap.h" />
     <ClInclude Include="source\SSPlayer\common\Animator\ssplayer_effect.h" />

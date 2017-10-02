@@ -44,14 +44,13 @@ void E2::LoadGraphic() {
 	mVoiceBroken = LoadSoundMem("Data/E1/ドラゴン・鳴き声02.mp3");
 	mSoundBlood = LoadSoundMem("Data/E1/蒸気.mp3");
 	mSoundBroken = LoadSoundMem("Data/E1/robot-footstep1.mp3");
-	mSoundWind = LoadSoundMem("Data/E1/天候・荒野の風.mp3");
-
+	
 	mSoundSword = LoadSoundMem("Data/E2/shock4.mp3");
 
 	mBGM = LoadSoundMem("Data/E1/hsd.mp3");
 }
 
-void E2::Process(Player &player) {
+void E2::Process(int &state, Player &player) {
 
 	mSprite->setPosition(mPositionX - Camera::getInstance().getPositonX(),
 		Parameter::WINDOW_HEIGHT - mPositionY + Camera::getInstance().getPositonY());
@@ -84,7 +83,7 @@ void E2::Process(Player &player) {
 		}
 
 		if (!CheckSoundMem(mSoundBreath))PlaySoundMem(mSoundBreath, DX_PLAYTYPE_LOOP);
-		if (!CheckSoundMem(mSoundWind))PlaySoundMem(mSoundWind, DX_PLAYTYPE_LOOP);
+		
 	}
 
 	//ボルト2破壊中
@@ -115,7 +114,6 @@ void E2::Process(Player &player) {
 			mSprite->setStep(0.3f);
 		}
 		if (CheckSoundMem(mSoundBreath))StopSoundMem(mSoundBreath);
-		if (CheckSoundMem(mSoundWind))StopSoundMem(mSoundWind);
 		if (!CheckSoundMem(mBGM))PlaySoundMem(mBGM, DX_PLAYTYPE_LOOP);
 	}
 

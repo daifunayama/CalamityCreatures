@@ -9,6 +9,7 @@ public:
 	virtual void Load() = 0;
 	virtual void Process() = 0;
 	virtual void Drawing() = 0;
+	virtual void Remove() = 0;
 
 private:
 	const int mSceneId;		//ÉVÅ[ÉìÇÃID

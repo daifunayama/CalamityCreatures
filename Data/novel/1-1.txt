@@ -1,5 +1,6 @@
---------------------------------------------
+---------------一行の基準線-----------------
 cmbgm1
+cmclrallbout
 燃えるような紅さの…
 
 それでいて凍てつくような冷たさの…
@@ -20,21 +21,23 @@ cmname1
 cmname0
 そして…
 
-cmclrcg
+cmse1
+cmcg2
 焼けるような痛み。
 耳を裂くような轟音。
 
 わたしの意識は、そこで途絶えた。
 
+cmclrcg
 cmbgg1
 cmname1
-cmchara1
-cmface4
+cmchara1c
+cmface4c
 cmse0
 cmstopbgm
 「……はぁ……はぁ……」
 
-cmface1
+cmface1c
 「………」
 
 「くそ…またあの夢か…」
@@ -57,20 +60,25 @@ cmname0
 あくび交じりにベッドから起き上がると、
 事務所の方から誰かの声が聞こえた。
 
-cmface7
+cmface7c
 cmname1
 「うーん…ねむ…」
 
+cmallbout
 cmbgg2
 cmname0
+cmclrallbout
 目をこすりながら事務所に降りると、
 見知った顔の男がいた。
 
+cmclrcharac
+cmchara1l
+cmchara3r
 cmname0
+cmname1
 「おう、ようやくお目覚めか」
 
 cmface1
-cmname1
 「…朝っぱらからなんだよ、ギムレット」
 
 cmname3
@@ -110,7 +118,8 @@ cmname3
 
 「依頼人にはそんな時間も金もねえってわけだ」
 
-cmcharaclr
+cmclrcharal
+cmclrcharar
 cmbgg0
 cmname0
 機械仕掛けの巨大生物、機巧生物（カラクリ）。
@@ -125,7 +134,8 @@ cmname0
 存在だ。危険だとわかっていても、人々は幻油
 に依存せざるを得ないのが現状である。
 
-cmchara1
+cmchara1l
+cmchara3r
 cmbgg2
 cmname1
 「オイルタウンのくせにカラクリ対策もして
@@ -147,7 +157,7 @@ cmname1
 cmname0
 ギムレットは黙って指を３本立てた。
 
-cmface7
+cmface7l
 cmname1
 「あー、そう。じゃあ二度寝するから、
 　もう起こすなよ」
@@ -155,7 +165,7 @@ cmname1
 cmname3
 「お、おい、ちょっと待てよ！」
 
-cmface1
+cmface1l
 cmname1
 「こっちは慈善事業じゃないんだ。そんな報酬
 　で命賭けられるか」
@@ -197,7 +207,7 @@ cmname3
 「目撃者の情報だと…そのカラクリには何本もの
 　長い首があったそうだ」
 
-cmface4
+cmface4l
 cmname1
 「！！」
 
@@ -217,7 +227,7 @@ cmbgg2
 cmname3
 「引き受ける気になったか？」
 
-cmface1
+cmface1l
 cmname1
 「………」
 
@@ -236,7 +246,7 @@ cmname3
 cmname1
 「ああ」
 
-cmface2
+cmface2l
 「解体屋チゼルの妙技、見せてやるよ」
 
 cmallbout
@@ -253,7 +263,7 @@ cmname3
 「ところでお前さん、依頼は久々だろう？
 　なまったりしてねえだろうな？」
 
-cmface1
+cmface1l
 cmname2
 「誰に聞いてやがる。こっちはプロだぞ」
 
@@ -273,7 +283,7 @@ cmname3
 cmname2
 「言ったろ、あたしはタダ働きはしないんだよ」
 
-cmface2
+cmface2l
 「仕事をさせるなら誠意を見せなってんだ」
 
 cmname3
@@ -289,8 +299,8 @@ cmname3
 　仕事しねえなんて言うのか？」
 
 cmname1
-cmicon1
-cmface1
+cmicon1l
+cmface1l
 「うぐ………」
 
 cmname3
@@ -302,12 +312,14 @@ cmname3
 「それで事故でも起きようもんなら…」
 
 cmname2
-cmicon2
+cmicon2l
 「だああ！　わかったよ！　やればいいんだろ！」
 
 「そんなちょろい仕事タダでやってやるよ！」
 
 cmname3
-「フフ…そうかい、じゃあ頼んだぜ」
+「フフ…そうかい、じゃあ頼んだぜ。
+　ちょうど雨もあがったようだしな」
 
-fin
+cmallbout
+cmfin

@@ -2,8 +2,8 @@
 #include "../Parameter.h"
 
 void Camera::Init() {
-	mPositionX = 0;
-	mPositionY = 0;
+	mPositionX = - 500 - Parameter::WINDOW_WIDTH / 2;
+	mPositionY = 600-Parameter::WINDOW_HEIGHT / 2 - 100;
 	quakeX = 0;
 	quakeY = 0;
 	quakeCounter = 0;
@@ -15,8 +15,8 @@ void Camera::Follow(int pX, int pY, int speed) {
 	distX = (double)(pX - mPositionX);
 	distY = (double)(pY - mPositionY);
 
-	if (-10 < distX && distX < 10)distX = 0;
-	if (-10 < distY && distY < 10)distY = 0;
+	if (-30 < distX && distX < 30)distX = 0;
+	if (-30 < distY && distY < 30)distY = 0;
 
 	distAngle = atan2(distY, distX);
 

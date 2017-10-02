@@ -1,5 +1,6 @@
 #include "NovelScene.h"
 #include "DxLib.h"
+#include "../Application.h"
 #include "../Utility.h"
 #include <fstream>
 
@@ -28,7 +29,7 @@ void NovelScene::Init() {
 	flagAllowEnter =false;
 	flagAllowCommand = true;
 	flagBlackout = false;
-	flagAllBlackout = false;
+	flagAllBlackout = true;
 }
 
 void NovelScene::Load() {
@@ -38,6 +39,7 @@ void NovelScene::Load() {
 	mBackGround[0] = LoadGraph("Data/graphic/background/background1.png");
 	mBackGround[1] = LoadGraph("Data/graphic/background/4-5-08-e.png");
 	mBackGround[2] = LoadGraph("Data/graphic/background/background3.png");
+	mBackGround[3] = LoadGraph("Data/graphic/background/sf_mo01_d.png");
 	mWindow = LoadGraph("Data/graphic/ui/window.png");
 
 	charaSprite[1].base = LoadGraph("Data/graphic/chara/chara1/base.png");
@@ -51,21 +53,29 @@ void NovelScene::Load() {
 	charaSprite[1].face[8] = LoadGraph("Data/graphic/chara/chara1/face8.png");
 	charaSprite[1].face[9] = LoadGraph("Data/graphic/chara/chara1/face9.png");
 
+	charaSprite[2].base = LoadGraph("Data/graphic/chara/chara2/base.png");
+
 	charaSprite[1].icon[1] = LoadGraph("Data/graphic/chara/chara1/icon1.png");
 	charaSprite[1].icon[2] = LoadGraph("Data/graphic/chara/chara1/icon2.png");
 	charaSprite[1].icon[3] = LoadGraph("Data/graphic/chara/chara1/icon3.png");
+
+	charaSprite[3].base = LoadGraph("Data/graphic/chara/chara3/base.png");
 
 	mCG = -1;
 
 	mSoundMessage = LoadSoundMem("Data/se/button68.mp3");
 	mSE[0] = LoadSoundMem("Data/se/sceneswitch1.mp3");
+	mSE[1] = LoadSoundMem("Data/se/爆破・水上爆発01.mp3");
+
+	Read();
 }
 
 void NovelScene::LoadFile() {
 	std::ifstream ifs;
-	std::string str;
+	std::string str,pass;
 
-	ifs.open("Data/novel/1-1.txt");
+	pass = "Data/novel/" + Utility::IntToString(Application::mChapterId) + "-1.txt";
+	ifs.open(pass.c_str());
 
 	if (ifs) {
 		//基準行の読み飛ばし
@@ -86,6 +96,14 @@ void NovelScene::Process() {
 		Read();
 	}
 
+	if (mController.getKey(9) == 1) {
+		Application::mNextSceneId = Parameter::SCENE_BATTLE;
+		if (Application::mChapterId == 3)Application::mNextSceneId = Parameter::SCENE_TITLE;
+		flagAllowCommand = false;
+		flagAllowEnter = false;
+		if (CheckSoundMem(mBGM))StopSoundMem(mBGM);
+	}
+
 	DoCommand();
 
 	//表示箇所を進める
@@ -102,15 +120,18 @@ void NovelScene::Read() {
 	mReadAfterCommand = true;
 
 	while (1) {
-		if (!strcmp(Buffer[mBufferLine].substr(0, 2).c_str(), "cm") && flagAllowCommand) {
+		if (flagAllowCommand) {
+			if (!strcmp(Buffer[mBufferLine].substr(0, 2).c_str(), "cm")) {
 
-			//コマンド後バッファリードをオフにする
-			mReadAfterCommand = false;
+				//コマンド後バッファリードをオフにする
+				mReadAfterCommand = false;
 
-			//コマンドを読み実行する
-			ReadCommand(Buffer[mBufferLine]);
+				//コマンドを読み実行する
+				ReadCommand(Buffer[mBufferLine]);
 
-			mBufferLine++;
+				mBufferLine++;
+			}
+			else break;
 		}
 		else break;
 	}
@@ -133,6 +154,7 @@ void NovelScene::ReadFromBuffer() {
 
 	//バッファからスロットに読み込み、バッファを読み進める
 	for (int i = 0; i < 3; i++) {
+		//if (Buffer.size() <= (i + mBufferLine+3))break;
 		line[i] = Buffer[i + mBufferLine];
 		if (strcmp(line[i].c_str(), ""))mAddCount++;
 		else break;
@@ -152,28 +174,67 @@ void NovelScene::ReadCommand(std::string command) {
 
 	//キャラコマンド
 	if (!strcmp(command.substr(2, 5).c_str(), "chara")) {
-		mChara[1].charaId = Utility::StringToInt(command.substr(7, 1).c_str());
-		mChara[1].faceId = 1;
+		if (!strcmp(command.substr(8, 1).c_str(), "l")) {
+			mChara[0].charaId = Utility::StringToInt(command.substr(7, 1).c_str());
+			mChara[0].faceId = 1;
+		}
+		if (!strcmp(command.substr(8, 1).c_str(), "c")) {
+			mChara[1].charaId = Utility::StringToInt(command.substr(7, 1).c_str());
+			mChara[1].faceId = 1;
+		}
+		if (!strcmp(command.substr(8, 1).c_str(), "r")) {
+			mChara[2].charaId = Utility::StringToInt(command.substr(7, 1).c_str());
+			mChara[2].faceId = 1;
+		}
+	
 		mReadAfterCommand = true;
 	}
 
 	//キャラ消去コマンド
-	if (!strcmp(command.substr(2, 8).c_str(), "characlr")) {
-		mChara[1].charaId = 0;
-		mChara[1].faceId = 0;
-		mChara[1].iconId = 0;
+	if (!strcmp(command.substr(2, 8).c_str(), "clrchara")) {
+		if (!strcmp(command.substr(10, 1).c_str(), "l")) {
+			mChara[0].charaId = 0;
+			mChara[0].faceId = 0;
+			mChara[0].iconId = 0;
+		}
+		if (!strcmp(command.substr(10, 1).c_str(), "c")) {
+			mChara[1].charaId = 0;
+			mChara[1].faceId = 0;
+			mChara[1].iconId = 0;
+		}
+		if (!strcmp(command.substr(10, 1).c_str(), "r")) {
+			mChara[2].charaId = 0;
+			mChara[2].faceId = 0;
+			mChara[2].iconId = 0;
+		}
 		mReadAfterCommand = true;
 	}
 
 	//表情コマンド
 	if (!strcmp(command.substr(2, 4).c_str(), "face")) {
-		mChara[1].faceId = Utility::StringToInt(command.substr(6, 1).c_str());
+		if (!strcmp(command.substr(7, 1).c_str(), "l")) {
+			mChara[0].faceId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
+		if (!strcmp(command.substr(7, 1).c_str(), "c")) {
+			mChara[1].faceId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
+		if (!strcmp(command.substr(7, 1).c_str(), "r")) {
+			mChara[2].faceId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
 		mReadAfterCommand = true;
 	}
 
 	//アイコンコマンド
 	if (!strcmp(command.substr(2, 4).c_str(), "icon")) {
-		mChara[1].iconId = Utility::StringToInt(command.substr(6, 1).c_str());
+		if (!strcmp(command.substr(7, 1).c_str(), "l")) {
+			mChara[0].iconId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
+		if (!strcmp(command.substr(7, 1).c_str(), "c")) {
+			mChara[1].iconId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
+		if (!strcmp(command.substr(7, 1).c_str(), "r")) {
+			mChara[2].iconId = Utility::StringToInt(command.substr(6, 1).c_str());
+		}
 		mReadAfterCommand = true;
 	}
 
@@ -253,13 +314,20 @@ void NovelScene::ReadCommand(std::string command) {
 		mReadAfterCommand = true;
 	}
 
-
-
 	//ウェイト
 	if (!strcmp(command.substr(2, 4).c_str(), "wait")) {
 		mWaitcounter = Utility::StringToInt(command.substr(6, 3).c_str());
 		flagAllowEnter = false;
 		flagAllowCommand = false;
+	}
+
+	//終了コマンド
+	if (!strcmp(command.substr(2, 3).c_str(), "fin")) {
+		Application::mNextSceneId = Parameter::SCENE_BATTLE;
+		if (Application::mChapterId == 3)Application::mNextSceneId = Parameter::SCENE_TITLE;
+		flagAllowCommand = false;
+		flagAllowEnter = false;
+		Remove();
 	}
 }
 
@@ -303,10 +371,13 @@ void NovelScene::Drawing() {
 	DrawGraph(0, 0, mBackGround[mBGId], 0);
 
 	//キャラ立ち絵
-	if (mChara[1].charaId) {
-		DrawGraph(640 - 200, 0, charaSprite[mChara[1].charaId].base, true);
-		if (mChara[1].faceId)DrawGraph(640 - 200, 0, charaSprite[mChara[1].charaId].face[mChara[1].faceId], true);
-		if (mChara[1].iconId)DrawGraph(640 - 200, 0, charaSprite[mChara[1].charaId].icon[mChara[1].iconId], true);
+	for (int i = 0; i < 3; i++) {
+		if (mChara[i].charaId) { //c 440
+			if(i == 2)DrawTurnGraph(i * 300 + 140, 0, charaSprite[mChara[i].charaId].base, true);
+			else DrawGraph(i*300 + 140, 0, charaSprite[mChara[i].charaId].base, true);
+			if (mChara[i].faceId)DrawGraph(i * 300 + 140, 0, charaSprite[mChara[i].charaId].face[mChara[i].faceId], true);
+			if (mChara[i].iconId)DrawGraph(i * 300 + 140, 0, charaSprite[mChara[i].charaId].icon[mChara[i].iconId], true);
+		}
 	}
 
 	//CG
@@ -318,16 +389,11 @@ void NovelScene::Drawing() {
 
 	//キャラ名
 	DrawFormatStringToHandle(150, 480, Parameter::COLOR_WHITE, Parameter::FONT_40, name[mNameId].c_str());
-	//DrawFormatString(100, 180, Parameter::COLOR_RED, "buffer %d length %d", mBufferLine, Buffer.size());
 	
 	//文章表示
 	for (int i = 0; i < 3; i++) {
-		//DrawFormatString(100, 210 + i * 35, Parameter::COLOR_RED,"test %d %d %d",mCurrentLine,line[i].size(),mPoint[i]);
-		//if (!strcmp(line[i].c_str(), ""))break;
 		DrawFormatStringToHandle(150, 540 + i * 45, Parameter::COLOR_WHITE, Parameter::FONT_40, line[i].substr(0, mPoint[i]).c_str());
 	}
-
-	//DrawFormatStringToHandle(180, 440 + 0 * 45, Parameter::COLOR_WHITE, Parameter::FONT_40, line[0].substr(0, 2).c_str());
 
 	//チャプタータイトル
 	if (mChapterGraph != -1) {
@@ -338,4 +404,19 @@ void NovelScene::Drawing() {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, mAllBlackoutLevel);
 	DrawBox(0, 0, Parameter::WINDOW_WIDTH, Parameter::WINDOW_HEIGHT, Parameter::COLOR_BLACK, 1);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+}
+
+void NovelScene::Remove() {
+	Buffer.clear();
+
+	for (int i = 0; i < 5; i++)DeleteGraph(mBackGround[i]);
+	DeleteGraph(mWindow);
+	for (int i = 0; i < 10; i++) {
+		DeleteGraph(charaSprite[i].base);
+
+		for (int j = 0; j < 10; j++) {
+			DeleteGraph(charaSprite[i].face[j]);
+			DeleteGraph(charaSprite[i].icon[j]);
+		}
+	}
 }

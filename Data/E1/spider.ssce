@@ -145,5 +145,14 @@
 			<orgImageName></orgImageName>
 			<posStable>0</posStable>
 		</cell>
+		<cell>
+			<name>eye_1</name>
+			<pos>1867 95</pos>
+			<size>81 79</size>
+			<pivot>0 0</pivot>
+			<rotated>0</rotated>
+			<orgImageName></orgImageName>
+			<posStable>0</posStable>
+		</cell>
 	</cells>
 </SpriteStudioCellMap>

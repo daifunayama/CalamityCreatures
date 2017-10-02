@@ -1,0 +1,205 @@
+---------------一行の基準線-----------------
+cmbgg3
+cmchara1l
+cmface2l
+cmname2
+cmclrallbout
+「ふう、点検終了！」
+
+cmchara3r
+cmname3
+「さすがだな。
+　腕は落ちちゃいないようだ」
+
+cmface2
+cmname2
+「ふん、当たり前だろ？」
+
+cmname3
+「じゃあ、オリアのカラクリの件も正式に
+　依頼するとしよう」
+
+cmname2
+「おう、任せときな！」
+
+「久々の仕事だ、パパっと行って速攻で
+　終わらせてきてやるよ」
+
+cmname1
+「待ちなさい」
+
+cmface1l
+cmname2
+「！」
+
+cmchara2c
+「………アンヴィル！」
+
+cmname3
+「おう、技師の兄ちゃんか」
+
+cmclrcharac
+cmchara2r
+cmname4
+「チゼル………また上手く言いくるめられて
+　タダ働きしてたってところかい？」
+
+cmname2
+cmicon1l
+「うぐ……」
+
+cmname4
+「まあそれはおいといて…
+　チゼル、左手を見せてくれるかい？」
+
+cmicon0l
+cmname2
+「あ、ああ…」
+
+cmname4
+「ふうむ…」
+
+「ボルトスピナーを出して」
+
+cmname2
+「はいよ」
+
+cmname0
+義手の手のひらから４本の爪のような機構が
+出現する。
+
+彼女の左腕はカラクリの機構が使われた特殊な
+義手である。
+
+町の技師アンヴィルが開発したもので、メンテ
+ナンスも彼が行っている。
+
+カラクリを解体するための機能として、強力な
+磁力を発生させる機能と、ボルトを回転させる
+機能が内蔵されている。
+
+cmname4
+「やはり、ボルトスピナーの調子があまり
+　よくないようだね」
+
+cmicon1l
+cmname2
+「な、なんでわかるんだよ？」
+
+cmname4
+「ボクの店から君が風車に登ってるのが
+　見えたからね」
+
+「様子を見ていれば義手の調子くらいわかるさ」
+
+「定期的に掃除するように言ったはずだけど、
+　またサボってたんだろう？」
+
+cmname2
+cmface9l
+「いやあ……解体の仕事がなかったもんで、
+　スピナーまでは手入れしなくてもいいかな～と」
+
+cmname4
+「義手は君と違ってデリケートなんだから、
+　ちゃんと手入れしなきゃダメだよ」
+
+cmface1l
+cmicon2l
+cmname2
+「な！
+　乙女にむかってなんつー失礼な！」
+
+cmname4
+「はいはい。
+　じゃあメンテするから店までおいで」
+
+cmallbout
+cmstopbgm
+cmicon0l
+cmwait100
+cmchapter2
+cmclrallbout
+cmwait120
+cmallbout
+cmwait100
+cmclrchapter
+cmclrallbout
+「これでよしと」
+
+cmname2
+「おお………
+　いつもながら鮮やかだなあ」
+
+cmname4
+「誰かさんが頻繁に壊すせいですっかり慣れたよ」
+
+cmface8l
+cmicon1l
+cmname2
+「うう…しれっと毒をはくなあ」
+
+cmname4
+「………チゼル、気を付けるんだよ」
+
+cmname2
+cmicon0l
+cmface2l
+「大丈夫だって。
+　今度はもっとデリケートに扱うよ」
+
+cmname4
+「そうじゃない。
+　義手なんて壊れてもいくらでも直せる」
+
+「でも…君はそうじゃないんだからね」
+
+cmname2
+cmface1l
+「………」
+
+cmface2l
+「ありがとう。
+　でも、あたしなら大丈夫だよ」
+
+「すぐに帰ってくるさ」
+
+cmname4
+「………ああ。
+　いってらっしゃい」
+
+cmallbout
+cmwait100
+cmclrcharal
+cmclrcharar
+cmchara1c
+cmbgg0
+cmname2
+cmclrallbout
+「ここが幻油倉庫か…」
+
+cmicon1l
+「稼働してないとはいえ、真っ暗でなにも
+　見えないな…」
+
+cmicon0l
+「！」
+
+cmallbout
+cmcg1
+cmcrlcharal
+cmclrallbout
+「あ、あれは…」
+
+「まさかホントにヤツが……！？」
+
+cmcg3
+「！！」
+
+「違う…あれはヤツじゃない！」
+
+「だが……ここまで来たらやらないわけには
+　いかないな！」
+
+cmallbout
+cmfin

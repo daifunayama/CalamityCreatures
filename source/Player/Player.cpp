@@ -30,10 +30,17 @@ void Player::Load() {
 	mGraphBreak2 = LoadGraph("Data/graphic/ui/break2.png");
 	mGraphBreakL = LoadGraph("Data/graphic/ui/break_l.png");
 	mGraphBreakR = LoadGraph("Data/graphic/ui/break_r.png");
+	mGraphRepair1 = LoadGraph("Data/graphic/ui/repair1.png");
+	mGraphRepair2 = LoadGraph("Data/graphic/ui/repair2.png");
+	mGraphBreakdown1 = LoadGraph("Data/graphic/ui/breakdown1.png");
+	mGraphBreakdown2 = LoadGraph("Data/graphic/ui/breakdown2.png");
+	mGraphBreakdownL = LoadGraph("Data/graphic/ui/breakdown_l.png");
+	mGraphBreakdownR = LoadGraph("Data/graphic/ui/breakdown_r.png");
 
 	mAnimeFire = LoadGraph("Data/graphic/animation/hibana.png");
 	mAnimeCatch = LoadGraph("Data/graphic/animation/catch.png");
 
+	mSoundDamage = LoadSoundMem("Data/se/手足・殴る、蹴る10.mp3");
 	mSoundCatch = LoadSoundMem("Data/heroine/robot-footstep2.mp3");
 	mSoundBreakBolt = LoadSoundMem("Data/heroine/電気ドリル02.mp3");
 	mSoundStep = LoadSoundMem("Data/heroine/se_maoudamashii_se_footstep01.mp3");
@@ -41,21 +48,26 @@ void Player::Load() {
 	mSoundLand = LoadSoundMem("Data/heroine/landing1.mp3");
 
 	mState = Parameter::S_PLAYER_NORMAL;
-	mPositionDX = 100;
-	mPositionDY = 100;
-	mPositionX = 100;
-	mPositionY = 100;
+	mPositionDX = -500;
+	mPositionDY = 600;
+	mPositionX = (int)mPositionDX;
+	mPositionY = (int)mPositionDY;
 	mAcceleX = 0;
 	mAcceleY = 0;
-	mGround = false; 
+	mGround = true; 
 	mRight = true;
 	mCatchId = 0;
 	mCatchLength = 0;
 	mCatchRad = 0;
 	mBoltBreakCounter = 0;
+	mDamageCounter = 0;
+	mAnimationCounter = 0;
+	mAnimeFireKey = -1;
+
+	mHitBox = HitBox(60, 200);
 }
 
-void Player::Move(Enemy &enemy) {
+void Player::Move(int &bState, Enemy &enemy) {
 	Quad mQuad;
 	ss::ResluteState pState, state;
 	string pass;
@@ -65,7 +77,7 @@ void Player::Move(Enemy &enemy) {
 	mEnemy = &enemy;
 
 	//静止・歩行状態のとき
-	if (mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) {
+	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1) {
 
 		//右方向への移動
 		if (mController.getRight() > 0) {
@@ -78,7 +90,7 @@ void Player::Move(Enemy &enemy) {
 		}
 	}
 
-	if (mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) {
+	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1) {
 		//ジャンプする
 		if (mController.getKey(4) == 1) {
 
@@ -91,7 +103,7 @@ void Player::Move(Enemy &enemy) {
 
 	//機体をつかむ
 	if (mState == Parameter::S_PLAYER_NORMAL) {
-		Catch();
+		if (!mDamageCounter)Catch();
 
 	}
 	
@@ -115,8 +127,14 @@ void Player::Move(Enemy &enemy) {
 	if (mAcceleX < 0)mRight = false;
 
 	//プレイヤーの移動
-	mPositionDX += mAcceleX;
-	mPositionDY -= mAcceleY;
+	if (bState == 1) {
+		mPositionDX += mAcceleX;
+		mPositionDY -= mAcceleY;
+	}
+	if (bState == 2) {
+		mPositionDX += mAcceleX / 3;
+		mPositionDY -= mAcceleY / 5;
+	}
 
 	mPositionX = (int)mPositionDX;
 	mPositionY = (int)mPositionDY;
@@ -135,6 +153,10 @@ void Player::Move(Enemy &enemy) {
 
 	}
 
+	mHitBox.SetPosition(mPositionX, mPositionY);
+
+	if (mDamageCounter > 0)mDamageCounter--;
+
 	UpdateAnimation();
 
 }
@@ -150,8 +172,9 @@ void Player::Catch() {
 
 	mSprite->getPartState(pState, "root");
 
+	//はりつきポイント
 	for (int n = 0; n < mEnemy->getNumHit(); n++) {
-		if (mEnemy->getHitExist(n)) {
+		if (mEnemy->getHitExist(n) && !mGround) {
 			pass.clear();
 			pass = "hit" + Utility::IntToString(n + 1);
 			mQuad = mEnemy->getQuad(pass.c_str());
@@ -176,6 +199,7 @@ void Player::Catch() {
 		}
 	}
 
+	//ボルト
 	for (int n = 0; n < mEnemy->getNumBolt(); n++) {
 		if (mEnemy->getBoltExist(n)) {
 			pass.clear();
@@ -197,6 +221,29 @@ void Player::Catch() {
 			}
 		}
 	}
+
+	//コア
+	for (int n = 0; n < mEnemy->getNumCore(); n++) {
+		if (mEnemy->getCoreExist(n)) {
+			pass.clear();
+			pass = "corebolt" + Utility::IntToString(n + 1);
+			mQuad = mEnemy->getQuad(pass.c_str());
+
+			if (Utility::CheckQuadPointHit(mQuad, pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150) && mCatching && mCatchId == 0) {
+
+				mState = Parameter::S_PLAYER_CATCH;
+				mCatchRad = 0;
+				mCatchLength = 0;
+
+				mCatchId = n + 201;
+
+				mAcceleX = 0;
+				mAcceleY = 0;
+
+				PlaySoundMem(mSoundCatch, DX_PLAYTYPE_BACK);
+			}
+		}
+	}
 }
 
 /*つかみ中*/
@@ -206,12 +253,17 @@ void Player::Catching() {
 
 	AnimationController::getInstance().SetPosition(mAnimeCatchKey, mPositionDX, mPositionDY - 150);
 
-	if (!mController.getKey(5)) {
+	if (!mController.getKey(5) || mDamageCounter == 99) {
 		mCatching = false;
 		mGround = false;
 		mState = Parameter::S_PLAYER_NORMAL;
 		mCatchId = 0;
 		mBoltBreakCounter = 0;
+		if (mAnimeFireKey != -1) {
+			AnimationController::getInstance().Remove(mAnimeFireKey);
+			mAnimeFireKey = -1;
+		}
+		if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
 	}
 	else {
 		if (mController.getKey(4) == 1) {
@@ -220,27 +272,33 @@ void Player::Catching() {
 			DoJump();
 			mCatchId = 0;
 			mBoltBreakCounter = 0;
+			if (mAnimeFireKey != -1) {
+				AnimationController::getInstance().Remove(mAnimeFireKey);
+				mAnimeFireKey = -1;
+			}
+			if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
 		}
 		else {
 			if (mCatchId != 0) {
 
 				//はりつきポイント
-				if (mEnemy->getHitExist(mCatchId - 1)) {
-					pass.clear();
-					pass = "hit" + Utility::IntToString(mCatchId);
+				if (mCatchId > 0 && mCatchId < 100) {
+					if (mEnemy->getHitExist(mCatchId - 1)) {
+						pass.clear();
+						pass = "hit" + Utility::IntToString(mCatchId);
 
-					mEnemy->getSprite().getPartState(state, pass.c_str());
+						mEnemy->getSprite().getPartState(state, pass.c_str());
 
-					mSprite->setPosition(state.x - mCatchLength * cosf(mCatchRad - state.rotationZ * Parameter::PI / 180),
-						state.y - 150 + mCatchLength * sinf(mCatchRad - state.rotationZ * Parameter::PI / 180));
+						mSprite->setPosition(state.x - mCatchLength * cosf(mCatchRad - state.rotationZ * Parameter::PI / 180),
+							state.y - 150 + mCatchLength * sinf(mCatchRad - state.rotationZ * Parameter::PI / 180));
 
-					mSprite->getPartState(pState, "root");
-					mPositionDX = pState.x + Camera::getInstance().getPositonX();
-					mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+						mSprite->getPartState(pState, "root");
+						mPositionDX = pState.x + Camera::getInstance().getPositonX();
+						mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+					}
 				}
-
 				//ボルト
-				if (mCatchId > 100) {
+				if (mCatchId > 100 && mCatchId < 200) {
 					if (mEnemy->getBoltExist(mCatchId - 101)) {
 						pass.clear();
 						pass = "bolt" + Utility::IntToString(mCatchId - 100);
@@ -266,6 +324,7 @@ void Player::Catching() {
 							mBoltBreakCounter = 0;
 							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
 							AnimationController::getInstance().Remove(mAnimeFireKey);
+							mAnimeFireKey = -1;
 						}
 
 						if (mBoltBreakCounter == 10) {
@@ -281,6 +340,55 @@ void Player::Catching() {
 							mAcceleY = 42;
 							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
 							AnimationController::getInstance().Remove(mAnimeFireKey);
+							mAnimeFireKey = -1;
+						}
+					}
+				}
+
+				//コアボルト
+				if (mCatchId > 200) {
+					if (mEnemy->getCoreExist(mCatchId - 201)) {
+						pass.clear();
+						pass = "corebolt" + Utility::IntToString(mCatchId - 200);
+
+						mEnemy->getSprite().getPartState(state, pass.c_str());
+
+						mSprite->setPosition(state.x, state.y - 150);
+
+						mSprite->getPartState(pState, "root");
+						mPositionDX = pState.x + Camera::getInstance().getPositonX();
+						mPositionDY = Parameter::WINDOW_HEIGHT - pState.y + Camera::getInstance().getPositonY();
+
+						if (mController.getKey(6) == 1) {
+							mBoltBreakCounter = 1;
+
+							mAnimeFireKey = AnimationController::getInstance().Create(mAnimeFire, 11, mPositionDX, mPositionDY, 100, 250, 4, 0, 16, 2, 250, -1, 0, 1);
+						}
+						if (mController.getKey(6) && mBoltBreakCounter) {
+							mBoltBreakCounter++;
+							AnimationController::getInstance().SetPosition(mAnimeFireKey, mPositionDX, mPositionDY + 250);
+						}
+						if (!mController.getKey(6)) {
+							mBoltBreakCounter = 0;
+							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
+							AnimationController::getInstance().Remove(mAnimeFireKey);
+							mAnimeFireKey = -1;
+						}
+
+						if (mBoltBreakCounter == 10) {
+							PlaySoundMem(mSoundBreakBolt, DX_PLAYTYPE_BACK);
+						}
+
+						if (mBoltBreakCounter >= 150) {
+							mEnemy->BrokenCore(mCatchId - 200);
+							mCatching = false;
+							mState = Parameter::S_PLAYER_NORMAL;
+							mCatchId = 0;
+							mBoltBreakCounter = 0;
+							mAcceleY = 42;
+							if (CheckSoundMem(mSoundBreakBolt))StopSoundMem(mSoundBreakBolt);
+							AnimationController::getInstance().Remove(mAnimeFireKey);
+							mAnimeFireKey = -1;
 						}
 					}
 				}
@@ -352,6 +460,18 @@ void Player::DoJump() {
 	PlaySoundMem(mSoundJump, DX_PLAYTYPE_BACK);
 }
 
+/*ダメージを食らう*/
+void Player::Damaged() {
+	if (mDamageCounter == 0) {
+		mDamageCounter = 100;
+		if (CheckSoundMem(mSoundBreakBolt)) {
+			StopSoundMem(mSoundBreakBolt);
+		}
+		PlaySoundMem(mSoundDamage, DX_PLAYTYPE_BACK);
+	}
+}
+
+/*アニメーションを更新する*/
 void Player::UpdateAnimation() {
 	if (mCatchId == 0) {
 		if (mState == Parameter::S_PLAYER_RIDE) {
@@ -450,6 +570,16 @@ void Player::CheckWallHit() {
 		}
 	}
 	*/
+
+	if(mPositionDX < -1000){
+		mPositionDX = -1000;
+		mAcceleX = 0;
+	}
+	if (mPositionDX > 3000) {
+		mPositionDX = 3000;
+		mAcceleX = 0;
+	}
+
 	//床
 	if (mPositionDY > Parameter::GROUND_LINE - 100) {
 		mPositionDY = Parameter::GROUND_LINE - 100;
@@ -457,7 +587,7 @@ void Player::CheckWallHit() {
 		mAcceleX = 0;
 		mGround = true;
 
-		PlaySoundMem(mSoundLand, DX_PLAYTYPE_BACK);
+		if(mCatchId == 0)PlaySoundMem(mSoundLand, DX_PLAYTYPE_BACK);
 	}
 
 	mPositionX = (int)mPositionDX;
@@ -466,63 +596,169 @@ void Player::CheckWallHit() {
 
 void Player::Draw() {
 	float pX, pY;
-	static int animationCounter = 0,lastCatchId;
+	static int lastCatchId;
 	string pass;
 	ss::ResluteState state, pState;
 
 	mSprite->getPartState(pState, "root");
 
+	if (mCatchId > 0 && mCatchId != lastCatchId)mAnimationCounter = 0;
 
-	//ボルトをつかんでいる間ゲージを表示
-	if (mCatchId > 100 && mBoltBreakCounter > 0 && mBoltBreakCounter < 150) {
-		DrawGraph(pState.x - 150 + sin(mBoltBreakCounter *50  * Parameter::PI/180.0) * mBoltBreakCounter/5, 
-			Parameter::WINDOW_HEIGHT - pState.y - 300 , mGraphBreak1, 1);
+	if (!strcmp(typeid(*mEnemy).name(), "class E0")) {
+		//ボルトをつかんでいる間ゲージを表示
+		if (mCatchId > 100 && mBoltBreakCounter > 0 && mBoltBreakCounter < 150) {
+			DrawGraph(pState.x - 150,
+				Parameter::WINDOW_HEIGHT - pState.y - 300, mGraphRepair1, 1);
 
-		DrawRectGraph(pState.x - 150 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter/5, 
-			Parameter::WINDOW_HEIGHT - pState.y - 300 , 0, 0, mBoltBreakCounter * 2, 88, mGraphBreak2, 1, 0);
+			DrawRectGraph(pState.x - 150,
+				Parameter::WINDOW_HEIGHT - pState.y - 300, 0, 0, mBoltBreakCounter * 2, 88, mGraphRepair2, 1, 0);
 
-		if (mBoltBreakCounter == 149 && animationCounter == 0) {
-			animationCounter = 50;
-			lastCatchId = mCatchId;
+			if (mBoltBreakCounter == 149 && mAnimationCounter == 0) {
+				mAnimationCounter = 50;
+				lastCatchId = mCatchId;
+			}
+		}
+
+		//リペアアニメーション
+		if (mAnimationCounter > 0 && mBoltBreakCounter == 0) {
+			if (mAnimationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - mAnimationCounter) * 255 / 40);
+
+			pass.clear();
+			pass = "boltPosition" + Utility::IntToString(lastCatchId - 100);
+			mEnemy->getSprite().getPartState(state, pass.c_str());
+			pX = state.x - 150;
+			pY = Parameter::WINDOW_HEIGHT - state.y - 150;
+
+			DrawGraph(pX, pY + mAnimationCounter - 50, mGraphRepair2, 1);
+			mAnimationCounter--;
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 		}
 	}
+	else {
+		if (mCatchId > 100 && mCatchId < 200) {
+			//ボルトをつかんでいる間ゲージを表示
+			if (mCatchId > 100 && mBoltBreakCounter > 0 && mBoltBreakCounter < 150) {
+				DrawGraph(pState.x - 150 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter / 5,
+					Parameter::WINDOW_HEIGHT - pState.y - 300, mGraphBreak1, 1);
 
+				DrawRectGraph(pState.x - 150 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter / 5,
+					Parameter::WINDOW_HEIGHT - pState.y - 300, 0, 0, mBoltBreakCounter * 2, 88, mGraphBreak2, 1, 0);
 
-	//ブレークアニメーション
-	if (animationCounter > 0 && mBoltBreakCounter == 0) {
-		
-		if(animationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - animationCounter) * 255 / 40);
+				if (mBoltBreakCounter == 149 && mAnimationCounter == 0) {
+					mAnimationCounter = 50;
+					lastCatchId = mCatchId;
+				}
+			}
+			//ブレークアニメーション
+			if (mAnimationCounter > 0 && mBoltBreakCounter == 0) {
+				if (mAnimationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - mAnimationCounter) * 255 / 40);
 
-		pass.clear();
-		pass = "boltPosition" + Utility::IntToString(lastCatchId - 100);
-		mEnemy->getSprite().getPartState(state, pass.c_str());
-		pX = state.x - 150;
-		pY = Parameter::WINDOW_HEIGHT - state.y - 150;
+				pass.clear();
+				pass = "boltPosition" + Utility::IntToString(lastCatchId - 100);
+				mEnemy->getSprite().getPartState(state, pass.c_str());
+				pX = state.x - 150;
+				pY = Parameter::WINDOW_HEIGHT - state.y - 150;
 
-		DrawGraph(pX + animationCounter*6 - 300, pY-animationCounter*1+50, mGraphBreakL, 1);
-		DrawGraph(pX - animationCounter*6 + 300, pY+animationCounter*1-50, mGraphBreakR, 1);
+				DrawGraph(pX + mAnimationCounter * 6 - 300, pY - mAnimationCounter * 1 + 50, mGraphBreakL, 1);
+				DrawGraph(pX - mAnimationCounter * 6 + 300, pY + mAnimationCounter * 1 - 50, mGraphBreakR, 1);
 
-		animationCounter--;
-		SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+				mAnimationCounter--;
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+			}
+		}
+
+		if (mCatchId > 200) {
+			//ボルトをつかんでいる間ゲージを表示
+			if (mCatchId > 100 && mBoltBreakCounter > 0 && mBoltBreakCounter < 150) {
+				DrawGraph(pState.x - 300 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter / 5,
+					Parameter::WINDOW_HEIGHT - pState.y - 300, mGraphBreakdown1, 1);
+
+				DrawRectGraph(pState.x - 300 + sin(mBoltBreakCounter * 50 * Parameter::PI / 180.0) * mBoltBreakCounter / 5,
+					Parameter::WINDOW_HEIGHT - pState.y - 300, 0, 0, mBoltBreakCounter * 4, 175, mGraphBreakdown2, 1, 0);
+
+				if (mBoltBreakCounter == 149 && mAnimationCounter == 0) {
+					mAnimationCounter = 50;
+					lastCatchId = mCatchId;
+				}
+			}
+			//ブレークアニメーション
+			if (mAnimationCounter > 0 && mBoltBreakCounter == 0) {
+				if (mAnimationCounter < 40)SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - (40 - mAnimationCounter) * 255 / 40);
+
+				pass.clear();
+				pass = "corebolt" + Utility::IntToString(lastCatchId - 200);
+				mEnemy->getSprite().getPartState(state, pass.c_str());
+				pX = state.x - 300;
+				pY = Parameter::WINDOW_HEIGHT - state.y - 150;
+
+				DrawGraph(pX + mAnimationCounter * 6 - 300, pY - mAnimationCounter * 1 + 50, mGraphBreakdownL, 1);
+				DrawGraph(pX - mAnimationCounter * 6 + 300, pY + mAnimationCounter * 1 - 50, mGraphBreakdownR, 1);
+
+				mAnimationCounter--;
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+			}
+		}
 	}
 	
-	if(mGround && mState == Parameter::S_PLAYER_NORMAL)DrawGraph(pState.x-60,Parameter::WINDOW_HEIGHT - pState.y +95, mGraphShadow, 1);
+	if (mDamageCounter == 0 || mDamageCounter / 5 % 2 == 0) {
+		//影
+		if (mGround && mState == Parameter::S_PLAYER_NORMAL)DrawGraph(pState.x - 60, Parameter::WINDOW_HEIGHT - pState.y + 95, mGraphShadow, 1);
 
-	if (mBoltBreakCounter > 0) {
-		if (mBoltBreakCounter < 10)DrawRotaGraph(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 0.08*mBoltBreakCounter, 0, mGraphStopper, 1, 0);
-		else DrawRotaGraph(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 0.8, -mBoltBreakCounter*0.1, mGraphStopper, 1, 0);
+		//ボルトスピナー
+		if (mBoltBreakCounter > 0) {
+			if (mBoltBreakCounter < 10)DrawRotaGraph(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 0.08*mBoltBreakCounter, 0, mGraphStopper, 1, 0);
+			else DrawRotaGraph(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 0.8, -mBoltBreakCounter*0.1, mGraphStopper, 1, 0);
+		}
+
+		mSprite->draw();
+
+		DrawBox(pState.x - 15, Parameter::WINDOW_HEIGHT - pState.y - 150 - 1, pState.x + 15, Parameter::WINDOW_HEIGHT - pState.y - 150 + 1, Parameter::COLOR_RED, 1);
+		DrawBox(pState.x - 1, Parameter::WINDOW_HEIGHT - pState.y - 150 - 15, pState.x + 1, Parameter::WINDOW_HEIGHT - pState.y - 150 + 15, Parameter::COLOR_RED, 1);
+		DrawCircle(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 3, Parameter::COLOR_RED, 1, 1);
+
+		//mHitBox.Draw(Parameter::COLOR_BLUE);
 	}
 
-	mSprite->draw();
 
-	DrawBox(pState.x - 15, Parameter::WINDOW_HEIGHT - pState.y - 150 - 1, pState.x + 15, Parameter::WINDOW_HEIGHT - pState.y - 150 + 1, Parameter::COLOR_RED, 1);
-	DrawBox(pState.x - 1, Parameter::WINDOW_HEIGHT - pState.y - 150 - 15, pState.x + 1, Parameter::WINDOW_HEIGHT - pState.y - 150 + 15, Parameter::COLOR_RED, 1);
-	DrawCircle(pState.x, Parameter::WINDOW_HEIGHT - pState.y - 150, 3, Parameter::COLOR_RED, 1, 1);
+
+
+
+
+
+
 
 	//DrawCircle(mPositionX - Camera::getInstance().getPositonX(),
 	//	mPositionY - Camera::getInstance().getPositonY(), 3, Parameter::COLOR_RED, true, true);
-
+	//DrawFormatString(10, 50, Parameter::COLOR_RED, "state :%s", typeid(*mEnemy).name());
 	//DrawFormatString(10, 50, Parameter::COLOR_RED, "state :%d  catchlength:%5f  catchrad:%5f  catchId:%d", mState, mCatchLength,mCatchRad,mCatchId);
+	//DrawFormatString(10, 50, Parameter::COLOR_RED, "%d %d", mPositionX, mPositionY);
 
 
+
+
+
+
+
+
+
+	if (!strcmp(typeid(*mEnemy).name(), "class E0")) {
+		if (mEnemy->getBoltExist(0) && mEnemy->getBoltExist(1) && mEnemy->getBoltExist(2) && mEnemy->getBoltExist(3)) {
+			if (mPositionX > 100 && mPositionX < 700 && mPositionY == 600) {
+				SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
+				DrawBox(50, 50, Parameter::WINDOW_WIDTH - 50, 250, Parameter::COLOR_BLUE, 1);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+				DrawStringToHandle(100, 100, "地上にいる際、またはしがみつき中、×ボタンでジャンプできる", Parameter::COLOR_WHITE, Parameter::FONT_30);
+				DrawStringToHandle(100, 140, "カラクリのボディの中で、網掛けの部分またはボルトには", Parameter::COLOR_WHITE, Parameter::FONT_30);
+				DrawStringToHandle(100, 180, "R2を長押しすることでしがみつくことができる", Parameter::COLOR_WHITE, Parameter::FONT_30);
+			}
+			if (mCatchId > 100) {
+				SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
+				DrawBox(50, 50, Parameter::WINDOW_WIDTH - 50, 250, Parameter::COLOR_BLUE, 1);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+				DrawStringToHandle(100, 100, "ボルトにしがみついている際、Rを長押しでボルトを回せる", Parameter::COLOR_WHITE, Parameter::FONT_30);
+			}
+		}
+	}
 }

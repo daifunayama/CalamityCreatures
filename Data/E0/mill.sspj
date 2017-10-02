@@ -122,7 +122,8 @@
 		<value>mill.ssae</value>
 	</animepackNames>
 	<lastAnimeFile>mill.ssae</lastAnimeFile>
-	<lastAnimeName>wait1</lastAnimeName>
+	<lastAnimeName>wait2</lastAnimeName>
 	<lastCellMapFile>mill.ssce</lastCellMapFile>
-	<lastCell>wing</lastCell>
+	<lastCell>boltPosition</lastCell>
+	<lastPart>wings</lastPart>
 </SpriteStudioProject>

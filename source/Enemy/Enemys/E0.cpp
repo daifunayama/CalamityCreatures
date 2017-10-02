@@ -18,13 +18,15 @@ void E0::Load() {
 		mHitExist[i] = 0;
 	}
 
-	numBolt = 0;
+	numBolt = 6;
 	numHit = 7;
+	numCore = 0;
 
 	for (int i = 0; i < numBolt; i++)mBoltExist[i] = 1;
 	for (int i = 0; i < numHit; i++)mHitExist[i] = 1;
 
 	mGraphBolt = LoadGraph("Data/graphic/bolt.png");
+	mGraphBolt2 = LoadGraph("Data/graphic/bolt2.png");
 
 	mBullet.Load();
 }
@@ -43,17 +45,13 @@ void E0::LoadGraphic() {
 
 	mSprite->setStep(0.6f);
 
-	//mSoundBreath = LoadSoundMem("Data/E0/歯車・回転中.mp3");
+	mSoundBlood = LoadSoundMem("Data/E1/蒸気.mp3");
+	mSoundBroken = LoadSoundMem("Data/se/decision18.mp3");
 
-	mVoiceBroken = LoadSoundMem("Data/E0/ドラゴン・鳴き声02.mp3");
-	mSoundBlood = LoadSoundMem("Data/E0/蒸気.mp3");
-	mSoundBroken = LoadSoundMem("Data/E0/robot-footstep1.mp3");
-	mSoundWind = LoadSoundMem("Data/E0/天候・荒野の風.mp3");
-
-	mBGM = LoadSoundMem("Data/E0/hsd.mp3");
+	mBGM = LoadSoundMem("Data/bgm/bgm_maoudamashii_fantasy13.mp3");
 }
 
-void E0::Process(Player &player) {
+void E0::Process(int &state, Player &player) {
 
 	mSprite->setPosition(mPositionX - Camera::getInstance().getPositonX(),
 		Parameter::WINDOW_HEIGHT - mPositionY + Camera::getInstance().getPositonY());
@@ -67,8 +65,25 @@ void E0::Process(Player &player) {
 		}
 		
 
-		if (!CheckSoundMem(mSoundBreath))PlaySoundMem(mSoundBreath, DX_PLAYTYPE_LOOP);
-		if (!CheckSoundMem(mSoundWind))PlaySoundMem(mSoundWind, DX_PLAYTYPE_LOOP);
+		if (state == 1 && !CheckSoundMem(mBGM))PlaySoundMem(mBGM, DX_PLAYTYPE_LOOP);
+
+		if (!mBoltExist[0] && !mBoltExist[1] && !mBoltExist[2] && !mBoltExist[3]) {
+			mState = 1;
+			PlaySoundMem(mSoundBlood, DX_PLAYTYPE_BACK);
+		}
+	}
+
+	if (mState == 1) {
+		if (mSprite->getPlayAnimeName() != "wait2") {
+			mSprite->play("mill/wait2");
+			mSprite->setStep(0.6f);
+		}
+
+		if (!mBoltExist[0] && !mBoltExist[1] && !mBoltExist[2] && !mBoltExist[3] && !mBoltExist[4] && !mBoltExist[5]) {
+			state = 2;
+			StopSoundMem(mBGM);
+			mSprite->setStep(0.3f);
+		}
 	}
 
 
@@ -78,23 +93,35 @@ void E0::Process(Player &player) {
 }
 
 void E0::BrokenBolt(int id) {
-	if (mState == 0) {
-		if (id == 2) {
-			mBoltExist[1] = 0;
-			mHitExist[3] = 0;
-			mHitExist[7] = 0;
-			mState = 1;
-
-			PlaySoundMem(mSoundBlood, DX_PLAYTYPE_BACK);
-			PlaySoundMem(mVoiceBroken, DX_PLAYTYPE_BACK);
-			PlaySoundMem(mSoundBroken, DX_PLAYTYPE_BACK);
-
-			mSprite->play("mill/break1");
-			mSprite->setStep(0.5f);
-		}
-	}
+	mBoltExist[id-1] = 0;
+	PlaySoundMem(mSoundBroken, DX_PLAYTYPE_BACK);
 }
 
 void E0::DrawBullet() {
 	mBullet.Draw();
+}
+
+void E0::Draw(Player &player) {
+	mSprite->draw();
+
+	AnimationController::getInstance().DrawFire();
+
+	ss::ResluteState state;
+	string pass;
+	for (int n = 0; n < numBolt; n++) {
+		pass.clear();
+		pass = "bolt" + Utility::IntToString(n + 1);
+
+		mSprite->getPartState(state, pass.c_str());
+		
+		if (mBoltExist[n]) {
+			if (player.getCatchId() > 100 && n == player.getCatchId() - 101 && player.getBoltBreakCounter() > 10) {
+				DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1,
+					player.getBoltBreakCounter() * 2 - state.rotationZ * Parameter::PI / 180, mGraphBolt, 1, 0);
+			}
+			else DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1, -state.rotationZ * Parameter::PI / 180, mGraphBolt, 1, 0);
+		}
+
+		else DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1, -state.rotationZ * Parameter::PI / 180, mGraphBolt2, 1, 0);
+	}
 }

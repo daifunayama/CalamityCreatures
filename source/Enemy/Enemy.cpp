@@ -18,13 +18,20 @@ void Enemy::LoadGraphic() {
 
 }
 
-void Enemy::Process(Player &player) {
+void Enemy::Process(int & state,Player &player) {
 
-	mSprite->update((float)30 / 1000);
+}
+
+void Enemy::CheckBulletHit(Player &player) {
+	mBullet.CheckHit(player);
 }
 
 void Enemy::BrokenBolt(int id) {
 	
+}
+
+void Enemy::BrokenCore(int id) {
+
 }
 
 void Enemy::Draw(Player &player) {
@@ -67,6 +74,21 @@ void Enemy::Draw(Player &player) {
 					player.getBoltBreakCounter()*2-state.rotationZ * Parameter::PI / 180, mGraphBolt, 1, 0);
 			}
 			else DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1, -state.rotationZ * Parameter::PI / 180, mGraphBolt, 1, 0);
+		}
+	}
+
+	for (int n = 0; n < numCore; n++) {
+		if (mCoreExist[n]) {
+			pass.clear();
+			pass = "corebolt" + Utility::IntToString(n + 1);
+
+			mSprite->getPartState(state, pass.c_str());
+
+			if (player.getCatchId() > 200 && n == player.getCatchId() - 201 && player.getBoltBreakCounter() > 10) {
+				DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1,
+					player.getBoltBreakCounter() * 2 - state.rotationZ * Parameter::PI / 180, mGraphCore, 1, 0);
+			}
+			else DrawRotaGraph(state.x, Parameter::WINDOW_HEIGHT - state.y, 1, -state.rotationZ * Parameter::PI / 180, mGraphCore, 1, 0);
 		}
 	}
 }

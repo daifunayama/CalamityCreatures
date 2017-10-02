@@ -6,6 +6,7 @@
 
 int Application::mOldSceneId = Parameter::SCENE_TITLE;
 int Application::mNextSceneId = Parameter::SCENE_TITLE;
+int Application::mChapterId = 1;
 
 ss::ResourceManager* Application::resman = nullptr;
 
@@ -20,6 +21,10 @@ void Application::MainLoop() {
 		AnimationController::getInstance().Reset();
 
 		switch (mNextSceneId) {
+
+		case Parameter::SCENE_TITLE:
+			mScene = new TitleScene();
+			break;
 
 		case Parameter::SCENE_NOVEL:
 			mScene = new NovelScene();
@@ -42,6 +47,6 @@ void Application::MainLoop() {
 void  Application::AddSpriteResource() {
 	Application::resman->addData("Data/E0/mill.ssbp");
 	Application::resman->addData("Data/E1/spider.ssbp");
-	Application::resman->addData("Data/E2/armor.ssbp");
+	//Application::resman->addData("Data/E2/armor.ssbp");
 	Application::resman->addData("Data/heroine/chisel.ssbp");
 }
