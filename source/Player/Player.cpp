@@ -77,7 +77,7 @@ void Player::Move(int &bState, Enemy &enemy) {
 	mEnemy = &enemy;
 
 	//静止・歩行状態のとき
-	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1) {
+	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1 && !mController.getKey(8)) {
 
 		//右方向への移動
 		if (mController.getRight() > 0) {
@@ -90,7 +90,7 @@ void Player::Move(int &bState, Enemy &enemy) {
 		}
 	}
 
-	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1) {
+	if ((mState == Parameter::S_PLAYER_NORMAL || mState == Parameter::S_PLAYER_RIDE) && bState == 1 && !mController.getKey(8)) {
 		//ジャンプする
 		if (mController.getKey(4) == 1) {
 
@@ -572,10 +572,14 @@ void Player::CheckWallHit() {
 	*/
 
 	if(mPositionDX < -1000){
+		if (mCatchId > 0)Damaged();
+
 		mPositionDX = -1000;
 		mAcceleX = 0;
 	}
 	if (mPositionDX > 3000) {
+		if (mCatchId > 0)Damaged();
+
 		mPositionDX = 3000;
 		mAcceleX = 0;
 	}

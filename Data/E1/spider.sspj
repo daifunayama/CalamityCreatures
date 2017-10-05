@@ -126,9 +126,9 @@
 		<value>blood.ssee</value>
 	</effectFileNames>
 	<lastAnimeFile>spider.ssae</lastAnimeFile>
-	<lastAnimeName>wait3</lastAnimeName>
+	<lastAnimeName>catch4</lastAnimeName>
 	<lastCellMapFile>spider.ssce</lastCellMapFile>
 	<lastEffectFile>blood.ssee</lastEffectFile>
 	<lastCell>box</lastCell>
-	<lastPart>hit2</lastPart>
+	<lastPart>atack1</lastPart>
 </SpriteStudioProject>

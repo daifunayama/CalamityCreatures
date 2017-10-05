@@ -33,6 +33,9 @@ void NovelScene::Init() {
 }
 
 void NovelScene::Load() {
+	LoadGraphScreen(0, 0, "Data/graphic/logo.png", 0);
+	ScreenFlip();
+
 	Init();
 	LoadFile();
 

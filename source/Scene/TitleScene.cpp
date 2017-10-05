@@ -17,6 +17,8 @@ void TitleScene::Process() {
 		Application::mNextSceneId = Parameter::SCENE_NOVEL;
 		Application::mChapterId = 1;
 
+		if(CheckHitKey(KEY_INPUT_2))Application::mChapterId = 2;
+
 		PlaySoundMem(mSoundEnter, DX_PLAYTYPE_BACK);
 		Remove();
 	}

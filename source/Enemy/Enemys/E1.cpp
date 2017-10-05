@@ -19,7 +19,7 @@ void E1::Load() {
 		mCoreExist[i] = 0;
 	}
 
-	numBolt = 3;
+	numBolt = 2;
 	numHit = 8;
 	numCore = 1;
 
@@ -364,9 +364,9 @@ void E1::Process(int &state, Player &player) {
 		if (mSprite->getPlayAnimeName() == "catch4") {
 
 			//UŒ‚”»’è
-			if (mSprite->getFrameNo() >= 50 && mSprite->getFrameNo() <= 60) {
+			if (mSprite->getFrameNo() >= 55 && mSprite->getFrameNo() <= 64) {
 				ss::ResluteState pState;
-				Quad quad = getQuad("foot2-1_2");
+				Quad quad = getQuad("atack1");
 				player.getSprite()->getPartState(pState, "root");
 
 				if (player.getCatchId() > 0 && Utility::CheckQuadPointHit(quad, pState.x, Parameter::WINDOW_HEIGHT - pState.y)) {

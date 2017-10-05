@@ -59,6 +59,13 @@ void Camera::Update(Player p1, Enemy enemy) {
 		moveY = enemy.getPositionY() - Parameter::WINDOW_HEIGHT / 2 - 100;
 	}
 
+	if (p1.getCatchId() > 0 || p1.getController().getKey(8)) {
+		if (p1.getController().getRight() > 10)moveX += 1000;
+		if (p1.getController().getLeft() > 10)moveX -= 1000;
+		if (p1.getController().getUp() > 10)moveY -= 1000;
+		if (p1.getController().getDown() > 10)moveY += 1000;
+	}
+
 	if (p1.getState() == Parameter::S_PLAYER_CATCH) {
 		Follow(moveX, moveY,30);
 	}

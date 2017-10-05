@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	//âÊñ ÇÃê›íË
 	ChangeWindowMode(true);
-	SetMainWindowText("");
+	SetMainWindowText("Calamity Creatures");
 	SetWindowSizeChangeEnableFlag(false);
 	SetGraphMode(Parameter::WINDOW_WIDTH, Parameter::WINDOW_HEIGHT, 32);
 	SetWindowSizeExtendRate(1);
